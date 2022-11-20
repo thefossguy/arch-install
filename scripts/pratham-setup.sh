@@ -155,7 +155,7 @@ rsync \
 ################################################################################
 
 # first, check if ZFS is already installed or not
-pacman -Qm | grep "zfs-dkms"
+pacman -Qm | grep "zfs-dkms" > /dev/null
 if [[ $? -eq 0 ]]; then
     ZFS_Y_OR_N=n
 else
