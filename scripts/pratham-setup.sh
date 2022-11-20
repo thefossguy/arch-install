@@ -110,9 +110,7 @@ rsync \
 doas pacman --sync --refresh --needed base-devel
 
 # build paru
-mkdir /tmp/parutemp-PARU
-pushd /temp/parutemp-PARU
-
+mkdir /tmp/parutemp-PARU && pushd /temp/parutemp-PARU
 git clone --depth 1 https://aur.archlinux.org/paru.git
 pushd paru
 makepkg -si
