@@ -65,7 +65,10 @@ pacman --sync --refresh --refresh --sysupgrade
 # setup the user pratham
 useradd -m -G adm,ftp,games,http,log,rfkill,sys,systemd-journal,uucp,wheel -s /bin/zsh pratham
 usermod --password $(echo pratham | openssl passwd -1 -stdin) pratham
-passwd -e pratham
+
+# don't expire the password, for now
+# https://github.com/sddm/sddm/issues/716
+#passwd -e pratham
 
 # setup the root user
 usermod --password $(echo root | openssl passwd -1 -stdin) root
