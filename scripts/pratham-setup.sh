@@ -23,6 +23,11 @@ if [[ $WHAT_IS_MY_TZ == "whoopsie" || $WHAT_IS_MY_HOSTNAME == "whoopsie" ]]; the
     systemctl reboot
 fi
 
+# apply a fix for KDE preventing shutdown/reboots
+# this is because I am using systemd-boot instead of GRUB/something else
+# https://invent.kde.org/plasma/plasma-workspace/-/wikis/Plasma-and-the-systemd-boot
+kwriteconfig5 --file startkderc --group General --key systemdBoot true
+
 ################################################################################
 # SSH KEYS
 ################################################################################
