@@ -5,7 +5,13 @@
 ################################################################################
 
 # for visudo
-EDITOR=/usr/bin/vim
+EDITOR=/usr/bin/nvim
+
+# setup sudo access for pratham
+/usr/bin/sudo -l -U pratham >/dev/null 2>&1
+if [[ $? -ne 0 ]]; then
+    doas visudo
+fi
 
 # set hostname
 WHAT_IS_MY_HOSTNAME=$(cat /etc/hostname)
@@ -43,7 +49,7 @@ fi
 function generate_keys()
 {
     if [[ ! -f "$1" && ! -f "$1"".pub" ]]; then
-        ssh-keygen -f ed25519 -f $1
+        ssh-keygen -t ed25519 -f $1
     fi
 }
 
@@ -91,7 +97,7 @@ Host git.thefossguy.com
     Port 22
 EOF
     cat $HOME/.ssh/gitea.pub
-    echo "Populate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
+    echo -e "\n\n\n\nPopulate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
     bash
 fi
 
@@ -108,7 +114,6 @@ function git_repo_check()
         git clone git@git.thefossguy.com:thefossguy/"$1"
     else
         pushd "$1"
-        tput -x clear
         git fetch
         git pull
         popd
@@ -139,51 +144,57 @@ rsync \
     --progress --stats \
     --itemize-changes --checksum \
     --exclude=".git" --exclude=".gitignore" --exclude="README.md" \
-    ~/my-git-repos/dotfiles/ ~/
-
-rsync \
-    --verbose --recursive --size-only --human-readable \
-    --progress --stats \
-    --itemize-changes --checksum \
-    --exclude=".git" --exclude=".gitignore" \
-    ~/my-git-repos/dotfiles-priv/ ~/
+    ~/my-git-repos/dotfiles{,-priv}/ ~/
 
 # podman?
 #grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
 
 
 ################################################################################
-# AUR-RELATED
+# AUR-RELATED/ZFS
 ################################################################################
 
-# setup sudo access for pratham (required for makepkg)
-/usr/bin/sudo -l -U pratham >/dev/null 2>&1
-if [[ $? -ne 0 ]]; then
-    doas visudo
+# first, check if ZFS is already installed or not
+pacman -Qm | grep "zfs-dkms"
+if [[ $? -eq 0 ]]; then
+    ZFS_Y_OR_N=n
+else
+    echo "Do you want to install ZFS, and by extension, \`yay\`? (y/n)"
+    read ZFS_Y_OR_N
 fi
 
-# build yay
-if command -v yay >/dev/null; then
-    echo "yay is already installed"
-else
-    # install necessary packages for installing \`yay\`
-    doas pacman --sync --refresh --needed base-devel
 
-    git clone --depth 1 https://aur.archlinux.org/yay-bin.git /tmp/yay-tmp-clone
-    pushd /tmp/yay-tmp-clone
+# build yay as the AUR helper that installs the `zfs-dkms` AUR package
+if [[ $ZFS_Y_OR_N == "y" || $ZFS_Y_OR_N == "Y" ]]; then
 
-    makepkg -si
-    if [[ $? -ne 0 ]]; then
-        echo "yay wasn't installed successfully :("
-        exit 1
+    # do I have yay?
+    if ! command -v yay > /dev/null; then
+
+        # build yay
+        doas pacman --sync --refresh --refresh --sysupgrade 
+        doas pacman --needed base-devel
+
+        git clone --depth 1 https://aur.archlinux.org/yay-bin.git /tmp/yay-tmp-clone
+        pushd /tmp/yay-tmp-clone
+        makepkg -si --needed
+
+        if [[ $? -ne 0 ]]; then
+            echo "yay wasn't installed successfully :("
+            exit 1
+        else
+            yay -Y --gendb
+            yay -Syu --devel
+        fi
+
+        popd
     fi
 
-    popd
+    # install ZFS DKMS
+    yay -S zfs-dkms
 fi
 
 # AUR pkgs
-yay -S noisetorch ssmtp
-#yay -S zfs-dkms
+#yay -S noisetorch ssmtp
 
 # wayland-WM
 #yay -S hyperland
@@ -196,5 +207,7 @@ yay -S noisetorch ssmtp
 # WRAP UP
 ################################################################################
 
-tput -x clear
-echo "vim-plug for nvim has been installed, please fetch the plugins using the \':PlugInstall\` command"
+echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
+echo -e "\nBelow are a few items I can not script myself:\n"
+echo -e "\n=> please run the \`:PlugInstall\` command in nvim (aliased to vim now)"
+echo -e "\n=> please uncomment the line that says $(tput bold)- ~/.config/alacritty/load_linux.yml$(tput sgr0)"
