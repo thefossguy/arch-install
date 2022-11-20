@@ -43,7 +43,7 @@ PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 
 # kernel devel
-PKGS_TO_INSTALL+=(base-devel bc cpio gcc git graphviz imagemagick inetutils kmod libelf linux-headers pahole perl python-sphinx python-sphinx_rtd_theme tar texlive-latexextra xmlto xz)
+PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers make perl tar xmlto xz)
 
 # virtualisation
 
