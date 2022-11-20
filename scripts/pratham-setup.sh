@@ -79,7 +79,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # get dotfiles
 echo -ne "\n\n\n\n"
 
-pushd $HOME
+mkdir -p $HOME/my-git-repos
+pushd $HOME/my-git-repos/
 git clone git@git.thefossguy.com:thefossguy/dotfiles-priv.git
 git clone git@git.thefossguy.com:thefossguy/dotfiles.git
 popd
