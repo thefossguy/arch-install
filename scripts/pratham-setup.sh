@@ -208,6 +208,6 @@ fi
 ################################################################################
 
 echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
-echo -e "\nBelow are a few items I can not script myself:\n"
+echo -e "Below are a few items I can not script myself:\n"
 echo -e "\n=> please run the \`:PlugInstall\` command in nvim (aliased to vim now)"
-echo -e "\n=> please uncomment the line that says $(tput bold)- ~/.config/alacritty/load_linux.yml$(tput sgr0)"
+echo -e "=> please uncomment the line that says $(tput bold)- ~/.config/alacritty/load_linux.yml$(tput sgr0)"
