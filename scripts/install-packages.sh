@@ -71,14 +71,14 @@ PKGS_TO_INSTALL+=(libdrm wayland)
 PKGS_TO_INSTALL+=(kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta plasma-wayland-session)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp)
+PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass)
 
 # Sound
 PKGS_TO_INSTALL+=(pipewire pipewire-pulse)
 #PKGS_TO_INSTALL+=(alsa-firmware alsa-lib alsa-utils gst-plugins-good gstreamer libao libcanberra-gstreamer libcanberra-pulse pulseaudio pulseaudio-alsa)
 
 # ???
-#PKGS_TO_INSTALL+=(exfatprogs netcfg otf-overpass)
+#PKGS_TO_INSTALL+=(exfatprogs netcfg)
 
 # xorg
 #PKGS_TO_INSTALL+=(libdrm libva-mesa-driver qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw xf86-input-libinput xf86-input-synaptics xf86-input-wacom xf86-video-qxl xf86-video-vmware xorg xorg-apps xorg-fonts-alias xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils)
