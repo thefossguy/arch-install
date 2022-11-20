@@ -158,37 +158,34 @@ if [[ $? -ne 0 ]]; then
     doas visudo
 fi
 
-# build paru
-if command -v paru >/dev/null; then
-    echo "paru is already installed"
+# build yay
+if command -v yay >/dev/null; then
+    echo "yay is already installed"
 else
-    # install necessary packages for installing \`paru\`
+    # install necessary packages for installing \`yay\`
     doas pacman --sync --refresh --needed base-devel
 
-    mkdir /tmp/parutemp-PARU && pushd /temp/parutemp-PARU
-    git clone --depth 1 https://aur.archlinux.org/paru.git
-    pushd paru
+    git clone --depth 1 https://aur.archlinux.org/yay-bin.git /tmp/yay-tmp-clone
+    pushd /tmp/yay-tmp-clone
 
     makepkg -si
     if [[ $? -ne 0 ]]; then
-        tput -x clear
-        echo "paru wasn't installed successfully :("
+        echo "yay wasn't installed successfully :("
         exit 1
     fi
 
     popd
-    popd
 fi
 
 # AUR pkgs
-paru -S noisetorch ssmtp
-#paru -S zfs-dkms
+yay -S noisetorch ssmtp
+#yay -S zfs-dkms
 
 # wayland-WM
-#paru -S hyperland
+#yay -S hyperland
 
 # intel 
-#paru -S libva-intel-driver-g45-h264 intel-hybrid-codec-driver
+#yay -S libva-intel-driver-g45-h264 intel-hybrid-codec-driver
 
 
 ################################################################################
