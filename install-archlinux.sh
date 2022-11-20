@@ -217,6 +217,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 mkdir -p /mnt/chroot-scripts
 cp scripts/chroot-setup.sh /mnt/chroot-scripts/
 arch-chroot /mnt bash /chroot-scripts/chroot-setup.sh "$CPU_VENDOR_NAME" "$ROOT_PARTITION"
+rm -rf /mnt/chroot-scripts
 if [[ $? -ne 0 ]]; then
     exit 1
 fi
