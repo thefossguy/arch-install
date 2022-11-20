@@ -23,21 +23,9 @@ if [[ $WHAT_IS_MY_TZ == "whoopsie" || $WHAT_IS_MY_HOSTNAME == "whoopsie" ]]; the
     systemctl reboot
 fi
 
-
 ################################################################################
-# SETUP DEV ENVIRONMENT
+# SSH KEYS
 ################################################################################
-
-# rust-lang
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup default stable
-rustup component add rust-src rust-analyzer
-rustup component add rust-analysis
-cargo install cargo-outdated cargo-tree
-
-
-# neovim (vim-plug)
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # create ssh keys
 if [[ ! -d $HOME/.ssh ]]; then
@@ -65,6 +53,23 @@ EOF
 cat $HOME/.ssh/gitea.pub
 echo "Populate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
 bash
+
+
+################################################################################
+# SETUP DEV ENVIRONMENT
+################################################################################
+
+# rust-lang
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh (removed because paru has a hard dependency on Arch's cargo; this is handled by the `rustup` package)
+rustup default stable
+rustup component add rust-src rust-analyzer
+rustup component add rust-analysis
+cargo install cargo-outdated cargo-tree
+
+
+# neovim (vim-plug)
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 
 # get dotfiles
 echo -ne "\n\n\n\n"
@@ -97,19 +102,21 @@ rsync \
 ################################################################################
 
 # install necessary packages for installing \`paru\`
-doas pacman -S --needed base-devel
+doas pacman --sync --refresh --needed base-devel
 
 # build paru
 mkdir /tmp/parutemp-PARU
 pushd /temp/parutemp-PARU
 
 git clone --depth 1 https://aur.archlinux.org/paru.git
+pushd paru
 makepkg -si
 if [[ $? -ne 0 ]]; then
     tput -x clear
     echo "paru wasn't installed successfully :("
     exit 1
 fi
+popd
 popd
 
 # AUR pkgs

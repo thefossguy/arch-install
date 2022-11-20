@@ -40,7 +40,7 @@ PKGS_TO_INSTALL+=(hd-idle hdparm tldr smartmontools wol)
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-
+PKGS_TO_INSTALL+=(rustup)
 
 # kernel devel
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers make perl tar xmlto xz)
