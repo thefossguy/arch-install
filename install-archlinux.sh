@@ -125,9 +125,7 @@ echo "Do you want a separate \`home\` and \`root\` partition? $YES_NO_OPTION"
 read SEPARATE_HOME_ROOT
 
 if [[ $SEPARATE_HOME_ROOT == "Y" || $SEPARATE_HOME_ROOT == "y" ]]; then
-    tput -x clear
-
-    echo "You chose that you want separate home and root partitions."
+    echo -e "\n\n\n\nYou chose that you want separate home and root partitions."
     echo "You will$FONT_BOLD not$FONT_NORM be asked for the Home partition's size. It will occupy the remaining space.\n"
     echo "Please enter the size of root partition in GiB (without the unit)."
     echo -e "10% or 12GB (whichever is greater) of the total drive space is usually a good idea.\n"
