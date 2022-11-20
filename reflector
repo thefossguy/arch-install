@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+reflector \
+    --connection-timeout 2 \
+    --latest 100 \
+    --sort rate \
+    --fastest 10 \
+    --protocol https \
+    --save /etc/pacman.d/mirrorlist
