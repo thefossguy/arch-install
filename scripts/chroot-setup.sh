@@ -102,7 +102,16 @@ title   Arch Linux btw
 linux   /vmlinuz-linux
 initrd  /$1-ucode.img
 initrd  /initramfs-linux.img
-options root=UUID=$(blkid $2 -s UUID -o value) rw systemd.show_status=false mem_sleep_default=deep splash
+options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel
+EOF
+
+# option "ignore_loglevel" displays all kernel messages, very useful in fallback
+cat <<EOF > "$ESP_PATH"/loader/entries/arch-fallback.conf
+title   did you break it? (fallback initramfs)
+linux   /vmlinuz-linux
+initrd  /$1-ucode.img
+initrd  /initramfs-linux-fallback.img
+options root=UUID=$(blkid $2 -s UUID -o value) rw ignore_loglevel
 EOF
 
 # enable services
