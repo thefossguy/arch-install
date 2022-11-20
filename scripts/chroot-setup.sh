@@ -94,7 +94,7 @@ mkdir -p "$ESP_PATH"/loader/entries
 
 cat <<EOF > "$ESP_PATH"/loader/loader.conf
 default          arch.conf
-timeout          0
+timeout          10
 console-mode     auto
 editor           no
 auto-firmware    no
