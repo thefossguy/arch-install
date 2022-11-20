@@ -197,6 +197,7 @@ mount --mkdir ${HOME_PARTITION} /mnt/home
 while [[ ! -f "$MIRRORLIST_FILE" ]]; do
     tput -x clear
     echo "$(date +'%Y/%m/%d %H:%M:%S') => Waiting for the mirrorlist to be generated. Please be patient."
+    echo "Go touch grass for a while ;)"
     sleep 10
 done
 mkdir -p /mnt/etc/pacman.d/
