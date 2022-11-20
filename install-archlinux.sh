@@ -223,7 +223,6 @@ fi
 
 # copy the setup script that can only be done after pratham logs in
 cp scripts/pratham-setup.sh /mnt/home/pratham/pratham-setup.sh
-arch-chroot /mnt chmod +x /home/pratham/pratham-setup.sh
 arch-chroot /mnt chown -v pratham:pratham /home/pratham/pratham-setup.sh
 
 
