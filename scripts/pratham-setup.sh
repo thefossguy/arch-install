@@ -62,11 +62,11 @@ Host git.thefossguy.com
     IdentityFile ~/.ssh/gitea
     Port 22
 EOF
+cat $HOME/.ssh/gitea.pub
 echo "Populate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
 bash
 
 # get dotfiles
-cat $HOME/.ssh/gitea.pub
 echo -ne "\n\n\n\n"
 
 pushd $HOME
