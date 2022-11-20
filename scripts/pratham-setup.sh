@@ -32,40 +32,84 @@ kwriteconfig5 --file startkderc --group General --key systemdBoot true
 # SSH KEYS
 ################################################################################
 
+# checking func
+function generate_keys()
+{
+    if [[ ! -f "$1" && ! -f "$1"".pub" ]]; then
+        ssh-keygen -f ed25519 -f $1
+    fi
+}
+
 # create ssh keys
 if [[ ! -d $HOME/.ssh ]]; then
     mkdir $HOME/.ssh
     chmod 700 $HOME/.ssh
 fi
 pushd $HOME/.ssh
-ssh-keygen -t ed25519 -f bluefeds
-ssh-keygen -t ed25519 -f flameboi
-ssh-keygen -t ed25519 -f gitea
-ssh-keygen -t ed25519 -f github
-ssh-keygen -t ed25519 -f gitlab
-ssh-keygen -t ed25519 -f sentinel
+generate_keys "bluefeds"
+generate_keys "flameboi"
+generate_keys "gitea"
+generate_keys "github"
+generate_keys "gitlab"
+generate_keys "sentinel"
 popd
 
-# IP address for server is hidden behind cloudflare proxy
-tput -x clear
-cat <<EOF > $HOME/.ssh/config
+################################################################################
+# CUSTOM HOSTNAME FOR git.thefossguy.com
+################################################################################
+
+# check for an empty hostname in ~/.ssh/config
+if [[ ! -f $HOME/.ssh/config ]]; then
+    EDIT_SSH_CONF=true
+elif
+    CONTENTS_OF_SSH_CONF=$(grep -A 1 "git.thefossguy.com" ~/.ssh/config | tail -n 1 | rev)
+
+    if [[ "${CONTENTS_OF_SSH_CONF::1}" != "5" ]]; then
+        EDIT_SSH_CONF=true
+    else
+        EDIT_SSH_CONF=false
+    fi
+
+fi
+
+
+# set the hostname
+if [[ $EDIT_SSH_CONF == true ]]; then
+    tput -x clear
+    cat <<EOF > $HOME/.ssh/config
 Host git.thefossguy.com
     Hostname ::?
     User git
     IdentityFile ~/.ssh/gitea
     Port 22
 EOF
-cat $HOME/.ssh/gitea.pub
-echo "Populate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
-bash
+    cat $HOME/.ssh/gitea.pub
+    echo "Populate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
+    bash
+fi
 
 
 ################################################################################
 # SETUP DEV ENVIRONMENT
 ################################################################################
 
+# clone repos
+function git_repo_check()
+{
+    pushd $HOME/my-git-repos
+    if [[ ! -d "$1" ]]; then
+        git clone git@git.thefossguy.com:thefossguy/"$1"
+    else
+        pushd "$1"
+        tput -x clear
+        git fetch
+        git pull
+        popd
+    fi
+    popd
+}
+
 # rust-lang
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh (removed because paru has a hard dependency on Arch's cargo; this is handled by the `rustup` package)
 rustup default stable
 rustup component add rust-src rust-analyzer
 rustup component add rust-analysis
@@ -80,10 +124,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 echo -ne "\n\n\n\n"
 
 mkdir -p $HOME/my-git-repos
-pushd $HOME/my-git-repos/
-git clone git@git.thefossguy.com:thefossguy/dotfiles-priv.git
-git clone git@git.thefossguy.com:thefossguy/dotfiles.git
-popd
+git_repo_check "dotfiles"
+git_repo_check "dotfiles-priv"
 
 rsync \
     --verbose --recursive --size-only --human-readable \
