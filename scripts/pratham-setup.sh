@@ -4,6 +4,9 @@
 # INITIAL SETUP
 ################################################################################
 
+# for visudo
+EDITOR=/usr/bin/vim
+
 # set hostname
 WHAT_IS_MY_HOSTNAME=$(cat /etc/hostname)
 if [[ $WHAT_IS_MY_HOSTNAME != "vasudev" ]]; then
@@ -61,7 +64,7 @@ popd
 # check for an empty hostname in ~/.ssh/config
 if [[ ! -f $HOME/.ssh/config ]]; then
     EDIT_SSH_CONF=true
-elif
+else
     CONTENTS_OF_SSH_CONF=$(grep -A 1 "git.thefossguy.com" ~/.ssh/config | tail -n 1 | rev)
 
     if [[ "${CONTENTS_OF_SSH_CONF::1}" != "5" ]]; then
@@ -149,10 +152,16 @@ rsync \
 # AUR-RELATED
 ################################################################################
 
+# setup sudo access for pratham (required for makepkg)
+/usr/bin/sudo -l -U pratham >/dev/null 2>&1
+if [[ $? -ne 0 ]]; then
+    doas visudo
+fi
 
 # build paru
 if command -v paru >/dev/null; then
-
+    echo "paru is already installed"
+else
     # install necessary packages for installing \`paru\`
     doas pacman --sync --refresh --needed base-devel
 
@@ -172,7 +181,7 @@ if command -v paru >/dev/null; then
 fi
 
 # AUR pkgs
-paru -S qomui noisetorch ssmtp
+paru -S noisetorch ssmtp
 #paru -S zfs-dkms
 
 # wayland-WM
@@ -187,4 +196,4 @@ paru -S qomui noisetorch ssmtp
 ################################################################################
 
 tput -x clear
-echo "vim-plug for nvim has been installed, please fetch the plugins using the \'`:PlugInstall\` command"
+echo "vim-plug for nvim has been installed, please fetch the plugins using the \':PlugInstall\` command"
