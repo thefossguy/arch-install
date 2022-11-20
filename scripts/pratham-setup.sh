@@ -90,14 +90,14 @@ rsync \
     --progress --stats \
     --itemize-changes --checksum \
     --exclude=".git" --exclude=".gitignore" --exclude="README.md" \
-    ~/dotfiles/ ~/
+    ~/my-git-repos/dotfiles/ ~/
 
 rsync \
     --verbose --recursive --size-only --human-readable \
     --progress --stats \
     --itemize-changes --checksum \
     --exclude=".git" --exclude=".gitignore" \
-    ~/dotfiles-priv/ ~/
+    ~/my-git-repos/dotfiles-priv/ ~/
 
 # podman?
 #grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
