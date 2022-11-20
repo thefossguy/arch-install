@@ -149,25 +149,31 @@ rsync \
 # AUR-RELATED
 ################################################################################
 
-# install necessary packages for installing \`paru\`
-doas pacman --sync --refresh --needed base-devel
 
 # build paru
-mkdir /tmp/parutemp-PARU && pushd /temp/parutemp-PARU
-git clone --depth 1 https://aur.archlinux.org/paru.git
-pushd paru
-makepkg -si
-if [[ $? -ne 0 ]]; then
-    tput -x clear
-    echo "paru wasn't installed successfully :("
-    exit 1
+if command -v paru >/dev/null; then
+
+    # install necessary packages for installing \`paru\`
+    doas pacman --sync --refresh --needed base-devel
+
+    mkdir /tmp/parutemp-PARU && pushd /temp/parutemp-PARU
+    git clone --depth 1 https://aur.archlinux.org/paru.git
+    pushd paru
+
+    makepkg -si
+    if [[ $? -ne 0 ]]; then
+        tput -x clear
+        echo "paru wasn't installed successfully :("
+        exit 1
+    fi
+
+    popd
+    popd
 fi
-popd
-popd
 
 # AUR pkgs
 paru -S qomui noisetorch ssmtp
-paru -S zfs-dkms
+#paru -S zfs-dkms
 
 # wayland-WM
 #paru -S hyperland
