@@ -121,6 +121,9 @@ function git_repo_check()
     popd
 }
 
+# update everything (along with `rustup`)
+doas pacman --sync --refresh --refresh --sysupgrade
+
 # rust-lang
 rustup default stable
 rustup component add rust-src rust-analyzer
