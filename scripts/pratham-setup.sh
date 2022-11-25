@@ -5,7 +5,7 @@
 ################################################################################
 
 # for visudo
-EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/nvim
 
 # setup sudo access for pratham
 /usr/bin/sudo -l -U pratham >/dev/null 2>&1
