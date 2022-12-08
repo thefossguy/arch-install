@@ -82,7 +82,6 @@ timedatectl set-ntp true
 # choose the drive to install Arch Linux on
 OS_DRIVE=empty
 CORRECTLY_CHOSEN=n
-VM_SYS_NAME=$(dmidecode -s system-manufacturer)
 
 if [[ $(grep 'AuthenticAMD' /proc/cpuinfo) ]]; then
     CPU_VENDOR_NAME="amd"
@@ -224,6 +223,27 @@ fi
 # copy the setup script that can only be done after pratham logs in
 cp scripts/pratham-setup.sh /mnt/home/pratham/pratham-setup.sh
 arch-chroot /mnt chown -v pratham:pratham /home/pratham/pratham-setup.sh
+
+# enable auto-login if Arch Linux is installed inside a VM
+if [[ $(dmidecode -s system-manufacturer) == "QEMU" ]]; then
+cat <<EOF > /etc/sddm.conf.d/kde_settings.conf
+[Autologin]
+Relogin=false
+Session=plasmawayland
+User=pratham
+
+[General]
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+
+[Theme]
+Current=
+
+[Users]
+MaximumUid=60513
+MinimumUid=1000
+EOF
+fi
 
 
 ################################################################################
