@@ -226,7 +226,7 @@ arch-chroot /mnt chown -v pratham:pratham /home/pratham/pratham-setup.sh
 
 # enable auto-login if Arch Linux is installed inside a VM
 if [[ $(dmidecode -s system-manufacturer) == "QEMU" ]]; then
-cat <<EOF > /etc/sddm.conf.d/kde_settings.conf
+cat <<EOF > /mnt/etc/sddm.conf.d/kde_settings.conf
 [Autologin]
 Relogin=false
 Session=plasmawayland
