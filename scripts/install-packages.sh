@@ -68,7 +68,8 @@ PKGS_TO_INSTALL+=(libdrm wayland)
 
 
 # Desktop Environment (Wayland)
-PKGS_TO_INSTALL+=(kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta plasma-wayland-session)
+#PKGS_TO_INSTALL+=(kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta plasma-wayland-session)
+PKGS_TO_INSTALL+=(xfce4)
 
 # GUI
 PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass)
