@@ -57,9 +57,10 @@ PKGS_TO_INSTALL+=(avahi nfs-utils samba smbclient)
 
 
 # GPU
-PKGS_TO_INSTALL+=(mesa qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw)
+#PKGS_TO_INSTALL+=(mesa qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw)
 #PKGS_TO_INSTALL+=(libva-mesa-driver mesa radeontop vulkan-radeon)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver mesa vulkan-intel)
+PKGS_TO_INSTALL+=(nvidia-lts)
 
 # Display Server (Wayland)
 PKGS_TO_INSTALL+=(libdrm wayland)
