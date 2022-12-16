@@ -50,7 +50,7 @@ PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers
 
 # network filesystems
 PKGS_TO_INSTALL+=(avahi nfs-utils samba smbclient)
-PKGS_TO_INSTALL+=(kdenetwork-filesharing)
+#PKGS_TO_INSTALL+=(kdenetwork-filesharing)
 #PKGS_TO_INSTALL+=(gvfs-smb
 
 # zfs
