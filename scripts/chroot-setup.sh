@@ -106,7 +106,7 @@ title   Arch Linux btw
 linux   /vmlinuz-linux
 initrd  /$1-ucode.img
 initrd  /initramfs-linux.img
-options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel
+options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel nvidia_drm.modeset=1
 EOF
 
 # option "ignore_loglevel" displays all kernel messages, very useful in fallback
