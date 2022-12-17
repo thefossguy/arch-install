@@ -225,25 +225,25 @@ cp scripts/pratham-setup.sh /mnt/home/pratham/pratham-setup.sh
 arch-chroot /mnt chown -v pratham:pratham /home/pratham/pratham-setup.sh
 
 # enable auto-login if Arch Linux is installed inside a VM
-#if [[ $(dmidecode -s system-manufacturer) == "QEMU" ]]; then
-#cat <<EOF > /mnt/etc/sddm.conf.d/kde_settings.conf
-#[Autologin]
-#Relogin=false
-#Session=plasmawayland
-#User=pratham
-#
-#[General]
-#HaltCommand=/usr/bin/systemctl poweroff
-#RebootCommand=/usr/bin/systemctl reboot
-#
-#[Theme]
-#Current=
-#
-#[Users]
-#MaximumUid=60513
-#MinimumUid=1000
-#EOF
-#fi
+if [[ $(dmidecode -s system-manufacturer) == "QEMU" ]]; then
+cat <<EOF > /mnt/etc/sddm.conf.d/kde_settings.conf
+[Autologin]
+Relogin=false
+Session=plasmawayland
+User=pratham
+
+[General]
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+
+[Theme]
+Current=
+
+[Users]
+MaximumUid=60513
+MinimumUid=1000
+EOF
+fi
 
 
 ################################################################################

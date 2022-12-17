@@ -50,8 +50,7 @@ PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-lts-hea
 
 # network filesystems
 PKGS_TO_INSTALL+=(avahi nfs-utils samba smbclient)
-#PKGS_TO_INSTALL+=(kdenetwork-filesharing)
-#PKGS_TO_INSTALL+=(gvfs-smb
+#PKGS_TO_INSTALL+=(gvfs-smb)
 
 # zfs
 
@@ -63,14 +62,13 @@ PKGS_TO_INSTALL+=(avahi nfs-utils samba smbclient)
 PKGS_TO_INSTALL+=(nvidia-lts nvidia-utils)
 
 # Display Server (Wayland)
-PKGS_TO_INSTALL+=(libdrm wayland)
+#PKGS_TO_INSTALL+=(libdrm wayland)
 
 # Window Manager (Wayland)
 
 
-# Desktop Environment (Wayland)
-#PKGS_TO_INSTALL+=(kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta plasma-wayland-session)
-PKGS_TO_INSTALL+=(xfce4)
+# Desktop Environment (X11; because NVIDIA)
+PKGS_TO_INSTALL+=(xorg-server kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta kdenetwork-filesharing)
 
 # GUI
 PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass)
