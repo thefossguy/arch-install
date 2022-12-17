@@ -68,7 +68,7 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-utils)
 
 
 # Desktop Environment (X11; because NVIDIA)
-PKGS_TO_INSTALL+=(xorg-server kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta kdenetwork-filesharing)
+PKGS_TO_INSTALL+=(xorg-server xorg-xinit kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta kdenetwork-filesharing)
 
 # GUI
 PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass)
