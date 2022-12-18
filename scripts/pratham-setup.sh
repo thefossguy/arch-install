@@ -164,48 +164,45 @@ pacman -Qm | grep "zfs-dkms" > /dev/null
 if [[ $? -eq 0 ]]; then
     ZFS_Y_OR_N=n
 else
-    echo "Do you want to install ZFS, and by extension, \`yay\`? (y/n)"
+    echo "Do you want to install ZFS, and by extension, \`paru\`? (y/n)"
     read ZFS_Y_OR_N
 fi
 
 
-# build yay as the AUR helper that installs the `zfs-dkms` AUR package
+# build paru as the AUR helper that installs the `zfs-dkms` AUR package
 if [[ $ZFS_Y_OR_N == "y" || $ZFS_Y_OR_N == "Y" ]]; then
 
-    # do I have yay?
-    if ! command -v yay > /dev/null; then
+    # do I have paru?
+    if ! command -v paru > /dev/null; then
 
-        # build yay
+        # build paru
         doas pacman --sync --refresh --refresh --sysupgrade 
         doas pacman --needed base-devel
 
-        git clone --depth 1 https://aur.archlinux.org/yay-bin.git /tmp/yay-tmp-clone
-        pushd /tmp/yay-tmp-clone
-        makepkg -si --needed
+        git clone --depth 1  https://aur.archlinux.org/paru.git /tmp/paru-tmp-clone
+        pushd /tmp/paru-tmp-clone
+        makepkg -si
 
         if [[ $? -ne 0 ]]; then
-            echo "yay wasn't installed successfully :("
+            echo "paru wasn't installed successfully :("
             exit 1
-        else
-            yay -Y --gendb
-            yay -Syu --devel
         fi
 
         popd
     fi
 
     # install ZFS DKMS
-    yay -S zfs-dkms
+    paru -S zfs-dkms
 fi
 
 # AUR pkgs
-#yay -S noisetorch ssmtp
+#paru -S noisetorch ssmtp
 
 # wayland-WM
-#yay -S hyperland
+#paru -S hyperland
 
 # intel 
-#yay -S libva-intel-driver-g45-h264 intel-hybrid-codec-driver
+#paru -S libva-intel-driver-g45-h264 intel-hybrid-codec-driver
 
 
 ################################################################################
