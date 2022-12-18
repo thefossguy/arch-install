@@ -15,6 +15,9 @@ PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils g
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
 
+# firewall
+PKGS_TO_INSTALL+=(firewalld)
+
 # add-on
 PKGS_TO_INSTALL+=(flatpak ffmpeg light)
 

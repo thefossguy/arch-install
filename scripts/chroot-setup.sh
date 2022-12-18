@@ -141,6 +141,7 @@ options root=UUID=$(blkid $2 -s UUID -o value) rw ignore_loglevel
 EOF
 
 # enable services
+systemctl enable firewalld.service
 systemctl enable systemd-boot-update.service
 systemctl enable sddm.service
 systemctl enable NetworkManager.service
