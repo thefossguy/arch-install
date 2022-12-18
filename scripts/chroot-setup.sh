@@ -125,9 +125,9 @@ EOF
 
 cat <<EOF > "$ESP_PATH"/loader/entries/arch.conf
 title   Arch Linux btw
-linux   /vmlinuz-linux
+linux   /vmlinuz-linux-lts
 initrd  /$1-ucode.img
-initrd  /initramfs-linux.img
+initrd  /initramfs-linux-lts.img
 options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel nvidia_drm.modeset=1
 EOF
 
@@ -136,7 +136,7 @@ cat <<EOF > "$ESP_PATH"/loader/entries/arch-fallback.conf
 title   did you break it? (fallback initramfs)
 linux   /vmlinuz-linux
 initrd  /$1-ucode.img
-initrd  /initramfs-linux-fallback.img
+initrd  /initramfs-linux-lts-fallback.img
 options root=UUID=$(blkid $2 -s UUID -o value) rw ignore_loglevel
 EOF
 
