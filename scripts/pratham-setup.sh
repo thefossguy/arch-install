@@ -160,7 +160,7 @@ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flath
 ################################################################################
 
 # first, check if ZFS is already installed or not
-pacman -Qm | grep "zfs-dkms" > /dev/null
+pacman -Qm | grep "zfs-linux-lts" > /dev/null
 if [[ $? -eq 0 ]]; then
     ZFS_Y_OR_N=n
 else
@@ -169,7 +169,7 @@ else
 fi
 
 
-# build paru as the AUR helper that installs the `zfs-dkms` AUR package
+# build paru as the AUR helper that installs the `zfs-linux-lts` AUR package
 if [[ $ZFS_Y_OR_N == "y" || $ZFS_Y_OR_N == "Y" ]]; then
 
     # do I have paru?
@@ -192,7 +192,7 @@ if [[ $ZFS_Y_OR_N == "y" || $ZFS_Y_OR_N == "Y" ]]; then
     fi
 
     # install ZFS DKMS
-    paru -S zfs-dkms
+    paru -S zfs-linux-lts
 fi
 
 # AUR pkgs
