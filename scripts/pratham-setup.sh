@@ -209,7 +209,16 @@ fi
 # WRAP UP
 ################################################################################
 
+tput -x clear
 echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
 echo -e "Below are a few items I can not script myself:\n"
 echo "=> please run the \`:PlugInstall\` command in nvim (aliased to vim now)"
 echo "=> please uncomment the line in \`~/.config/alacritty/alacritty.yml\` that says $(tput bold)- ~/.config/alacritty/load_linux.yml$(tput sgr0)"
+if ! command -v zpool > /dev/null; then
+    lsmod | grep zfs
+    if [[ $? -ne 0 ]]; then
+        echo "ZFS Kernel module is not loaded. Please run the \`sudo modprobe zfs\` command and reboot."
+    fi
+    sudo systemctl enable --now zfs-import-cache.service zfs-import-scan.service zfs-mount.service zfs-share.service zfs.target zfs-zed.service
+    sudo zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
+fi
