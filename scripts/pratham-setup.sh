@@ -15,8 +15,8 @@ fi
 
 # set hostname
 WHAT_IS_MY_HOSTNAME=$(cat /etc/hostname)
-if [[ $WHAT_IS_MY_HOSTNAME != "vasudev" ]]; then
-    hostnamectl set-hostname vasudev
+if [[ $WHAT_IS_MY_HOSTNAME != "flameboi" ]]; then
+    hostnamectl set-hostname flameboi
     WHAT_IS_MY_HOSTNAME=whoopsie
 fi
 

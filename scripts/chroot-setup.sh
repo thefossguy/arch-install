@@ -41,7 +41,7 @@ echo "en_IN UTF-8" > /etc/locale.gen
 locale-gen
 
 # set the machine hostname
-echo "vasudev" > /etc/hostname
+echo "flameboi" > /etc/hostname
 
 # create a new initramfs just to be safe
 mkinitcpio -P
