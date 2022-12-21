@@ -49,6 +49,7 @@ PKGS_TO_INSTALL+=(rustup)
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-lts-headers make perl tar xmlto xz)
 
 # virtualisation
+PKGS_TO_INSTALL+=(libvirt qemu-desktop virt-manager dnsmasq)
 
 
 # network filesystems
