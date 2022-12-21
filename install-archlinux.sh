@@ -32,8 +32,8 @@ fi
 # SELECT THE FASTEST "HTTPS" MIRRORS
 ################################################################################
 
-pacman -Sy --noconfirm reflector
 MIRRORLIST_FILE="/etc/pacman.d/mirrorlist"
+cp mirrorlist $MIRRORLIST_FILE
 
 # check if reflector is already running
 pgrep reflector >/dev/null
@@ -41,11 +41,6 @@ if [[ $? -eq 0 ]]; then
     IS_REFLECTOR_RUNNING=y
 else
     IS_REFLECTOR_RUNNING=n
-fi
-
-# remove $MIRRORLIST_FILE if file modification time is more than 10 days
-if [[ ! $(find "$MIRRORLIST_FILE" -mtime +10) && $IS_REFLECTOR_RUNNING == "n" ]]; then
-    rm -f "$MIRRORLIST_FILE"
 fi
 
 # pacman config
