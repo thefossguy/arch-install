@@ -199,7 +199,7 @@ cp ${MIRRORLIST_FILE} /mnt"$MIRRORLIST_FILE"
 
 # update pacman db
 pacman --sync --refresh --refresh
-pacman --S archlinux-keyring --noconfirm
+pacman -S archlinux-keyring --noconfirm
 
 # install packages
 bash scripts/install-packages.sh "$CPU_VENDOR_NAME"
