@@ -19,7 +19,7 @@ PKGS_TO_INSTALL+=(acpi_call iasl)
 PKGS_TO_INSTALL+=(firewalld)
 
 # add-on
-PKGS_TO_INSTALL+=(flatpak ffmpeg light)
+PKGS_TO_INSTALL+=(flatpak ffmpeg light bitwarden)
 
 # monitoring
 PKGS_TO_INSTALL+=(btop htop iotop iperf iperf3 nload)
@@ -34,7 +34,7 @@ PKGS_TO_INSTALL+=(aria2 wget yt-dlp)
 PKGS_TO_INSTALL+=(android-tools)
 
 # *utils-rust
-PKGS_TO_INSTALL+=(bat fd ripgrep tre)
+PKGS_TO_INSTALL+=(bat fd ripgrep tre tree)
 
 # system utilities
 PKGS_TO_INSTALL+=(hd-idle hdparm pkgfile tldr smartmontools wol)
