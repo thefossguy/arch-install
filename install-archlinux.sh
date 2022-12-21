@@ -49,7 +49,7 @@ if [[ ! $(find "$MIRRORLIST_FILE" -mtime +10) && $IS_REFLECTOR_RUNNING == "n" ]]
 fi
 
 # pacman config
-sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 10/" /etc/pacman.conf || echo "ParallelDownloads = 10" | tee -a /etc/pacman.conf
+sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 4/" /etc/pacman.conf || echo "ParallelDownloads = 4" | tee -a /etc/pacman.conf
 
 # start finding the best mirrors in the background
 if [[ ! -f "$MIRRORLIST_FILE" && $IS_REFLECTOR_RUNNING == "n" ]]; then
