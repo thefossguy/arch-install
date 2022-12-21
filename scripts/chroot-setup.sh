@@ -11,6 +11,9 @@ ROOT_CRONTAB="# remove cache every 2 hours and update local db
 
 # update the on-disk database every 6 hours
 0 */6 * * * updatedb >/dev/null 2>&1
+
+# update db for pkgfile
+@reboot pkgfile --update 2>&1
 "
 ################################################################################
 
