@@ -222,3 +222,4 @@ if ! command -v zpool > /dev/null; then
     sudo systemctl enable --now zfs-import-cache.service zfs-import-scan.service zfs-mount.service zfs-share.service zfs.target zfs-zed.service
     sudo zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
 fi
+echo -e "\n\nDotfiles have been copied, but some files are yet to be copied. Your manual intervention is necessary. Please copy the contents of the \"_OTHER\" directory manually."
