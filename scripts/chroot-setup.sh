@@ -14,6 +14,9 @@ ROOT_CRONTAB="# remove cache every 2 hours and update local db
 
 # update db for pkgfile
 @reboot pkgfile --update 2>&1
+
+# zfs scrub
+0 0 1,15 * * /usr/sbin/zpool scrub
 "
 ################################################################################
 
