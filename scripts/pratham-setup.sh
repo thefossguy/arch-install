@@ -155,6 +155,7 @@ rsync \
 
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.github.tchx84.Flatseal
 
 ################################################################################
 # AUR-RELATED/ZFS
