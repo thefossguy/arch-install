@@ -10,7 +10,7 @@ pacman --sync --refresh --refresh
 
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
@@ -19,7 +19,7 @@ PKGS_TO_INSTALL+=(acpi_call iasl)
 PKGS_TO_INSTALL+=(firewalld)
 
 # add-on
-PKGS_TO_INSTALL+=(flatpak ffmpeg light bitwarden)
+PKGS_TO_INSTALL+=(bitwarden flatpak ffmpeg light mediainfo)
 
 # monitoring
 PKGS_TO_INSTALL+=(btop htop iotop iperf iperf3 nload)
@@ -37,7 +37,7 @@ PKGS_TO_INSTALL+=(android-tools)
 PKGS_TO_INSTALL+=(bat fd ripgrep tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(hd-idle hdparm pkgfile tldr smartmontools wol)
+PKGS_TO_INSTALL+=(hd-idle hdparm mlocate pkgfile tldr smartmontools wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
@@ -53,7 +53,7 @@ PKGS_TO_INSTALL+=(libvirt qemu-desktop virt-manager dnsmasq)
 
 
 # network filesystems
-PKGS_TO_INSTALL+=(avahi nfs-utils samba smbclient)
+PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils samba smbclient)
 #PKGS_TO_INSTALL+=(gvfs-smb)
 
 # zfs
