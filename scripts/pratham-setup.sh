@@ -123,7 +123,6 @@ function git_repo_check()
 
 # update everything (along with `rustup`)
 doas pacman --sync --refresh --refresh --sysupgrade
-doas pkgfile --update
 
 # rust-lang
 rustup default stable
