@@ -75,7 +75,7 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-utils)
 PKGS_TO_INSTALL+=(xorg-server xorg-xinit kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta kdenetwork-filesharing spectacle xsel)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass)
+PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass noto-fonts-emoji)
 
 # Sound
 PKGS_TO_INSTALL+=(pipewire pipewire-pulse)
