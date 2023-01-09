@@ -160,41 +160,29 @@ flatpak install flathub com.github.tchx84.Flatseal
 # AUR-RELATED/ZFS
 ################################################################################
 
-# first, check if ZFS is already installed or not
-pacman -Qm | grep "zfs-linux-lts" > /dev/null
-if [[ $? -eq 0 ]]; then
-    ZFS_Y_OR_N=n
-else
-    echo "Do you want to install ZFS, and by extension, \`paru\`? (y/n)"
-    read ZFS_Y_OR_N
-fi
+# do I have paru?
+if ! command -v paru > /dev/null; then
 
+    # build paru
+    doas pacman --sync --refresh --refresh --sysupgrade
+    doas pacman --needed base-devel
 
-# build paru as the AUR helper that installs the `zfs-linux-lts` AUR package
-if [[ $ZFS_Y_OR_N == "y" || $ZFS_Y_OR_N == "Y" ]]; then
+    git clone --depth 1  https://aur.archlinux.org/paru.git /tmp/paru-tmp-clone
+    pushd /tmp/paru-tmp-clone
+    makepkg -si
 
-    # do I have paru?
-    if ! command -v paru > /dev/null; then
-
-        # build paru
-        doas pacman --sync --refresh --refresh --sysupgrade 
-        doas pacman --needed base-devel
-
-        git clone --depth 1  https://aur.archlinux.org/paru.git /tmp/paru-tmp-clone
-        pushd /tmp/paru-tmp-clone
-        makepkg -si
-
-        if [[ $? -ne 0 ]]; then
-            echo "paru wasn't installed successfully :("
-            exit 1
-        fi
-
-        popd
+    if [[ $? -ne 0 ]]; then
+        echo "paru wasn't installed successfully :("
+        exit 1
     fi
 
-    # install ZFS DKMS
-    paru -S zfs-linux-lts
+    popd
 fi
+
+# install packages if not installed
+pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
+pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
+pacman -Qm | grep "zfs-linux-lts" > /dev/null || paru -S zfs-linux-lts
 
 # AUR pkgs
 #paru -S noisetorch ssmtp
