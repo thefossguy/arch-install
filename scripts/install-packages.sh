@@ -10,7 +10,7 @@ pacman --sync --refresh --refresh
 
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
@@ -53,8 +53,8 @@ PKGS_TO_INSTALL+=(libvirt qemu-desktop virt-manager dnsmasq)
 
 
 # network filesystems
-PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils samba smbclient)
-#PKGS_TO_INSTALL+=(gvfs-smb)
+PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
+#PKGS_TO_INSTALL+=(gvfs-smb samba smbclient)
 
 # zfs
 
@@ -63,7 +63,7 @@ PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils samba smbclient)
 #PKGS_TO_INSTALL+=(mesa qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw)
 #PKGS_TO_INSTALL+=(libva-mesa-driver mesa radeontop vulkan-radeon)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver mesa vulkan-intel)
-PKGS_TO_INSTALL+=(nvidia-lts nvidia-utils)
+PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 
 # Display Server (Wayland)
 #PKGS_TO_INSTALL+=(libdrm wayland)
@@ -72,10 +72,10 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-utils)
 
 
 # Desktop Environment (X11; because NVIDIA)
-PKGS_TO_INSTALL+=(xorg-server xorg-xinit kcalc kcharselect kdf kdialog ktimer print-manager plasma plasma-meta kde-system-meta kdenetwork-filesharing spectacle xsel)
+PKGS_TO_INSTALL+=(xorg-server xorg-xinit xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm breeze-icons)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass noto-fonts-emoji)
+PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji)
 
 # Sound
 PKGS_TO_INSTALL+=(pipewire pipewire-pulse)
