@@ -10,7 +10,7 @@ pacman --sync --refresh --refresh
 
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
