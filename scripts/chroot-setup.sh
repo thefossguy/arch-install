@@ -83,6 +83,22 @@ echo "permit persist keepenv pratham" | tee -a /etc/doas.conf
 # setup root user's cron jobs
 echo "${ROOT_CRONTAB}" | crontab -
 
+# copy dotfiles
+sudo -u pratham /chroot-scripts/cp-dotfiles.sh
+
+
+################################################################################
+# BSPWM SETUP
+################################################################################
+
+cat <<EOF > /usr/share/xsessions/bspwm.desktop
+[Desktop Entry]
+Name=bspwm
+Comment=Binary space partitioning window manager
+Exec=/home/pratham/.xinitrc
+Type=Application
+EOF
+
 
 ################################################################################
 # NVIDIA SETUP
