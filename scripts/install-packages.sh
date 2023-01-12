@@ -72,10 +72,10 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 
 
 # Desktop Environment (X11; because NVIDIA)
-PKGS_TO_INSTALL+=(xorg-server xorg-xinit xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm breeze-icons)
+PKGS_TO_INSTALL+=(xorg-server xorg-xinit xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm breeze-icons lxsession)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol-qt)
+PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol thunar)
 
 # Sound
 PKGS_TO_INSTALL+=(pipewire pipewire-pulse pamixer wireplumber)
