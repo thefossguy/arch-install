@@ -75,10 +75,10 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 PKGS_TO_INSTALL+=(xorg-server xorg-xinit xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm breeze-icons)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji)
+PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol-qt)
 
 # Sound
-PKGS_TO_INSTALL+=(pipewire pipewire-pulse)
+PKGS_TO_INSTALL+=(pipewire pipewire-pulse wireplumber)
 #PKGS_TO_INSTALL+=(alsa-firmware alsa-lib alsa-utils gst-plugins-good gstreamer libao libcanberra-gstreamer libcanberra-pulse pulseaudio pulseaudio-alsa)
 
 # ???
