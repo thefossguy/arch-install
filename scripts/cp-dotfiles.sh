@@ -25,5 +25,5 @@ popd
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +'PlugInstall' +'q' +'q'
-sed -i 's/#  - ~/.config/alacritty/load_linux.yml/  - ~/.config/alacritty/load_linux.yml/g' /home/pratham/.config/alacritty/alacritty.yml
+sed -i 's@#  - ~/.config/alacritty/load_linux.yml@  - ~/.config/alacritty/load_linux.yml@g' /home/pratham/.config/alacritty/alacritty.yml
 popd
