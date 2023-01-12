@@ -34,6 +34,20 @@ fi
 
 
 ################################################################################
+# DARK THEME SETUP
+################################################################################
+
+mkdir -p $HOME/.config/gtk-3.0
+
+cat <<EOF > $HOME/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-application-prefer-dark-theme=true
+EOF
+
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+
+################################################################################
 # SSH KEYS
 ################################################################################
 
