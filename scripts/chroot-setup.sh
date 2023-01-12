@@ -13,7 +13,7 @@ ROOT_CRONTAB="# remove cache every 2 hours and update local db
 0 */6 * * * updatedb >/dev/null 2>&1
 
 # zfs scrub
-0 0 1,15 * * /usr/sbin/zpool scrub
+0 0 1,15 * * /usr/bin/zpool scrub
 "
 ################################################################################
 
@@ -84,7 +84,7 @@ echo "permit persist keepenv pratham" | tee -a /etc/doas.conf
 echo "${ROOT_CRONTAB}" | crontab -
 
 # copy dotfiles
-sudo -u pratham /chroot-scripts/cp-dotfiles.sh
+sudo -u pratham /chroot-scripts/doas-pratham.sh
 
 
 ################################################################################
@@ -101,10 +101,41 @@ EOF
 
 
 ################################################################################
+# SSH SETUP
+################################################################################
+
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config
+sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords no/g' /etc/ssh/sshd_config
+sed -i 's/#ClientAliveInterval 0/ClientAliveInterval 300/g' /etc/ssh/sshd_config
+sed -i 's/#ClientAliveCountMax 3/ClientAliveCountMax 2/g' /etc/ssh/sshd_config
+sed -i 's/#X11Forwarding no/X11Forwarding no/g' /etc/ssh/sshd_config
+
+
+################################################################################
+# LIBVIRT/KVM/QEMU SETUP
+################################################################################
+
+sed -i 's/FirewallBackend=nftables/FirewallBackend=iptables/g' /etc/firewalld/firewalld.conf
+sed -i 's/#user = "libvirt-qemu"/user = "pratham"/g' /etc/libvirt/qemu.conf
+sed -i 's/#group = "libvirt-qemu"/group = "pratham"/g' /etc/libvirt/qemu.conf
+
+
+################################################################################
+# LOCATEDB SETUP
+################################################################################
+
+sed -i 's@PRUNEPATHS = "@&/heathen_disk/personal/media/camera_roll @g' /etc/updatedb.conf
+
+################################################################################
 # NVIDIA SETUP
 ################################################################################
 
-cat <<EOF > /mnt/etc/pacman.d/hooks/nvidia.hook
+systemctl unmask nvidia-suspend nvidia-hibernate nvidia-resume
+systemctl enable nvidia-suspend nvidia-hibernate nvidia-resume
+
+mkdir -p /etc/pacman.d/hooks
+cat <<EOF > /etc/pacman.d/hooks/nvidia.hook
 [Trigger]
 Operation=Install
 Operation=Upgrade
@@ -112,6 +143,7 @@ Operation=Remove
 Type=Package
 Target=nvidia-lts
 Target=linux-lts
+Target=linux-lts-headers
 
 [Action]
 Description=Update NVIDIA module in initcpio
