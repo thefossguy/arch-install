@@ -138,7 +138,7 @@ rsync \
     --verbose --recursive --size-only --human-readable \
     --progress --stats \
     --itemize-changes --checksum \
-    --exclude=".git" --exclude=".gitignore" --exclude="README.md" \
+    --exclude=".git" --exclude=".gitignore" --exclude="README.md" --exclude="run_me.sh" \
     ~/my-git-repos/dotfiles{,-priv}/ ~/
 
 # dark mode (gtk)
