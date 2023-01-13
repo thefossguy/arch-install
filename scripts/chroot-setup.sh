@@ -56,7 +56,7 @@ echo "initramfs successfully created"
 ################################################################################
 
 # pacman config
-sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 4/" /etc/pacman.conf
+sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 6/" /etc/pacman.conf || echo "ParallelDownloads = 6" | tee -a /etc/pacman.conf
 sed -i "s/#Color/Color/" /etc/pacman.conf
 
 # update pacman db
