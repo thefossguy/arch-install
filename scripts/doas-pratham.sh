@@ -26,7 +26,4 @@ nvim +'PlugInstall' +'q' +'q'
 # alacritty
 sed -i 's@#  - ~/.config/alacritty/load_linux.yml@  - ~/.config/alacritty/load_linux.yml@g' /home/pratham/.config/alacritty/alacritty.yml
 
-# gtk dark theme
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
 popd
