@@ -117,6 +117,7 @@ sed -i 's/#X11Forwarding no/X11Forwarding no/g' /etc/ssh/sshd_config
 ################################################################################
 
 sed -i 's/FirewallBackend=nftables/FirewallBackend=iptables/g' /etc/firewalld/firewalld.conf
+sed -i 's@#uri_default = "qemu:///system"@uri_default = "qemu:///system"@g' /etc/libvirt/libvirt.conf
 sed -i 's/#user = "libvirt-qemu"/user = "pratham"/g' /etc/libvirt/qemu.conf
 sed -i 's/#group = "libvirt-qemu"/group = "pratham"/g' /etc/libvirt/qemu.conf
 
@@ -179,7 +180,7 @@ title   Arch Linux btw
 linux   /vmlinuz-linux-lts
 initrd  /$1-ucode.img
 initrd  /initramfs-linux-lts.img
-options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel nvidia_drm.modeset=1
+options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel audit=0 nvidia_drm.modeset=1
 EOF
 
 # option "ignore_loglevel" displays all kernel messages, very useful in fallback
@@ -195,6 +196,7 @@ EOF
 systemctl enable firewalld.service
 systemctl enable systemd-boot-update.service
 systemctl enable sddm.service
+systemctl enable libvirtd.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
 
