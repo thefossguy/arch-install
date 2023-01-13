@@ -149,7 +149,7 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --user flathub com.brave.Browser com.github.tchx84.Flatseal io.gitlab.librewolf-community
+flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.github.tchx84.Flatseal io.gitlab.librewolf-community org.raspberrypi.rpi-imager
 
 
 ################################################################################
