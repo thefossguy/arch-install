@@ -188,7 +188,7 @@ fi
 # install packages if not installed
 pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
 pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
-pacman -Qm | grep "zfs-linux-lts" > /dev/null || paru -S zfs-linux-lts
+pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-linux-lts
 
 # AUR pkgs
 #paru -S noisetorch ssmtp
