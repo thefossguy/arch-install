@@ -34,20 +34,6 @@ fi
 
 
 ################################################################################
-# DARK THEME SETUP
-################################################################################
-
-mkdir -p $HOME/.config/gtk-3.0
-
-cat <<EOF > $HOME/.config/gtk-3.0/settings.ini
-[Settings]
-gtk-application-prefer-dark-theme=true
-EOF
-
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-
-################################################################################
 # SSH KEYS
 ################################################################################
 
@@ -155,12 +141,16 @@ rsync \
     --exclude=".git" --exclude=".gitignore" --exclude="README.md" \
     ~/my-git-repos/dotfiles{,-priv}/ ~/
 
+# dark mode (gtk)
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 # podman?
 #grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
 
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.tchx84.Flatseal
+flatpak install --user flathub com.brave.Browser com.github.tchx84.Flatseal io.gitlab.librewolf-community
+
 
 ################################################################################
 # AUR-RELATED/ZFS
