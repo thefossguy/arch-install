@@ -37,7 +37,7 @@ PKGS_TO_INSTALL+=(android-tools)
 PKGS_TO_INSTALL+=(bat fd ripgrep tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(hd-idle hdparm mlocate tldr smartmontools wol)
+PKGS_TO_INSTALL+=(hd-idle hdparm mlocate tldr smartmontools usbutils wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
