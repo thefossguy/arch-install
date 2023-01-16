@@ -170,14 +170,14 @@ bootctl --esp-path="$ESP_PATH" --path="$ESP_PATH" install
 mkdir -p "$ESP_PATH"/loader/entries
 
 cat <<EOF > "$ESP_PATH"/loader/loader.conf
-default          arch-01-lts.conf
+default          arch-04-lts.conf
 timeout          10
 console-mode     auto
 editor           no
 auto-firmware    no
 EOF
 
-cat <<EOF > "$ESP_PATH"/loader/entries/arch-01-lts.conf
+cat <<EOF > "$ESP_PATH"/loader/entries/arch-04-lts.conf
 title   Arch Linux LTS kernel
 linux   /vmlinuz-linux-lts
 initrd  /$1-ucode.img
@@ -185,7 +185,7 @@ initrd  /initramfs-linux-lts.img
 options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_loglevel audit=0 nvidia_drm.modeset=1
 EOF
 
-cat <<EOF > "$ESP_PATH"/loader/entries/arch-02-non-lts.conf
+cat <<EOF > "$ESP_PATH"/loader/entries/arch-03-non-lts.conf
 title   Arch Linux latest kernel
 linux   /vmlinuz-linux
 initrd  /$1-ucode.img
@@ -194,7 +194,7 @@ options root=UUID=$(blkid $2 -s UUID -o value) rw mem_sleep_default=deep ignore_
 EOF
 
 # option "ignore_loglevel" displays all kernel messages, very useful in fallback
-cat <<EOF > "$ESP_PATH"/loader/entries/arch-03-lts-fallback.conf
+cat <<EOF > "$ESP_PATH"/loader/entries/arch-02-lts-fallback.conf
 title   Arch Linux LTS kernel (FALLBACK)
 linux   /vmlinuz-linux-lts
 initrd  /$1-ucode.img
@@ -202,7 +202,7 @@ initrd  /initramfs-linux-lts-fallback.img
 options root=UUID=$(blkid $2 -s UUID -o value) rw ignore_loglevel audit=0
 EOF
 
-cat <<EOF > "$ESP_PATH"/loader/entries/arch-04-non-lts-fallback.conf
+cat <<EOF > "$ESP_PATH"/loader/entries/arch-01-non-lts-fallback.conf
 title   Arch Linux latest kernel (FALLBACK)
 linux   /vmlinuz-linux
 initrd  /$1-ucode.img
