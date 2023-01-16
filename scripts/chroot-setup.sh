@@ -62,6 +62,7 @@ sed -i "s/#Color/Color/" /etc/pacman.conf
 # update pacman db
 pacman --sync --refresh --refresh --sysupgrade
 
+
 ################################################################################
 # USER SETUP
 ################################################################################
@@ -127,6 +128,7 @@ sed -i 's/#group = "libvirt-qemu"/group = "pratham"/g' /etc/libvirt/qemu.conf
 ################################################################################
 
 sed -i 's@PRUNEPATHS = "@&/heathen_disk/personal/media/camera_roll @g' /etc/updatedb.conf
+
 
 ################################################################################
 # NVIDIA SETUP

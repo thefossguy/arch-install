@@ -57,6 +57,7 @@ if [[ ! -f "$MIRRORLIST_FILE" && $IS_REFLECTOR_RUNNING == "n" ]]; then
         --save /etc/pacman.d/mirrorlist >/dev/null 2>&1 &
 fi
 
+
 ################################################################################
 # SET THINGS UP FOR INSTALLATION
 ################################################################################

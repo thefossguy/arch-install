@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 
-################################################################################
-# install packages
-################################################################################
-
-# update pacman db
+# force update pacman db
 pacman --sync --refresh --refresh
 
+################################################################################
+# SELECT PACKAGES TO BE INSTALLED
+################################################################################
 
 # absolutely necessary for _MY_ experience
 PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
@@ -19,7 +18,7 @@ PKGS_TO_INSTALL+=(acpi_call iasl)
 PKGS_TO_INSTALL+=(firewalld)
 
 # add-on
-PKGS_TO_INSTALL+=(bitwarden flatpak ffmpeg light mediainfo)
+PKGS_TO_INSTALL+=(flatpak ffmpeg light mediainfo)
 
 # monitoring
 PKGS_TO_INSTALL+=(btop htop iotop iperf iperf3 nload)
@@ -51,13 +50,9 @@ PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-lts-hea
 # virtualisation
 PKGS_TO_INSTALL+=(libvirt qemu-desktop virt-manager dnsmasq)
 
-
 # network filesystems
 PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
 #PKGS_TO_INSTALL+=(gvfs-smb samba smbclient)
-
-# zfs
-
 
 # GPU
 #PKGS_TO_INSTALL+=(mesa qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl)
@@ -68,14 +63,12 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 # Display Server (Wayland)
 #PKGS_TO_INSTALL+=(libdrm wayland)
 
-# Window Manager (Wayland)
-
 
 # Desktop Environment (X11; because NVIDIA)
 PKGS_TO_INSTALL+=(xorg-server xorg-xinit xorg-xsetroot xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm lxsession)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol thunar gnome-disk-utility)
+PKGS_TO_INSTALL+=(alacritty bitwarden firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol thunar gnome-disk-utility)
 
 # Sound
 PKGS_TO_INSTALL+=(pipewire pipewire-pulse pamixer wireplumber)
@@ -88,7 +81,6 @@ PKGS_TO_INSTALL+=(pipewire pipewire-pulse pamixer wireplumber)
 #PKGS_TO_INSTALL+=(libdrm libva-mesa-driver qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw xf86-input-libinput xf86-input-synaptics xf86-input-wacom xf86-video-qxl xf86-video-vmware xorg xorg-apps xorg-fonts-alias xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
 #PKGS_TO_INSTALL+=(xf86-video-amdgpu radeontop vulkan-radeon)
-
 
 # install x86 microcode
 if [[ "$1" == "amd" ]]; then

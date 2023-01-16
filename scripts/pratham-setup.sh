@@ -59,6 +59,7 @@ generate_keys "gitlab"
 generate_keys "sentinel"
 popd
 
+
 ################################################################################
 # CUSTOM HOSTNAME FOR git.thefossguy.com
 ################################################################################
@@ -90,7 +91,7 @@ Host git.thefossguy.com
 EOF
     cat $HOME/.ssh/gitea.pub
     echo -e "\n\n\n\nPopulate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
-    bash -t
+    nvim ~/.ssh/config
 fi
 
 
@@ -123,13 +124,8 @@ rustup component add rust-analysis
 cargo install cargo-outdated cargo-tree
 
 
-# neovim (vim-plug)
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-
 # get dotfiles
 echo -ne "\n\n\n\n"
-
 mkdir -p $HOME/my-git-repos
 git_repo_check "dotfiles"
 git_repo_check "dotfiles-priv"
@@ -153,7 +149,7 @@ flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.gith
 
 
 ################################################################################
-# AUR-RELATED/ZFS
+# AUR/PARU
 ################################################################################
 
 # do I have paru?
@@ -196,9 +192,6 @@ pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
 
 tput -x clear
 echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
-echo -e "Below are a few items I can not script myself:\n"
-echo "=> please run the \`:PlugInstall\` command in nvim (aliased to vim now)"
-echo "=> please uncomment the line in \`~/.config/alacritty/alacritty.yml\` that says $(tput bold)- ~/.config/alacritty/load_linux.yml$(tput sgr0)"
 if ! command -v zpool > /dev/null; then
     lsmod | grep zfs
     if [[ $? -ne 0 ]]; then
