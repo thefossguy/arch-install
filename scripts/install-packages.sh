@@ -9,7 +9,7 @@ pacman --sync --refresh --refresh
 ################################################################################
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-lts linux-firmware lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-firmware linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
@@ -18,7 +18,7 @@ PKGS_TO_INSTALL+=(acpi_call iasl)
 PKGS_TO_INSTALL+=(firewalld)
 
 # add-on
-PKGS_TO_INSTALL+=(flatpak ffmpeg light mediainfo)
+PKGS_TO_INSTALL+=(ffmpeg flatpak light mediainfo)
 
 # monitoring
 PKGS_TO_INSTALL+=(btop htop iotop iperf iperf3 nload)
@@ -36,7 +36,7 @@ PKGS_TO_INSTALL+=(android-tools)
 PKGS_TO_INSTALL+=(bat fd ripgrep tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(hd-idle hdparm mlocate tldr smartmontools usbutils wol)
+PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools tldr usbutils wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
@@ -48,7 +48,7 @@ PKGS_TO_INSTALL+=(rustup)
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-lts-headers make perl tar xmlto xz)
 
 # virtualisation
-PKGS_TO_INSTALL+=(libvirt qemu-desktop virt-manager dnsmasq)
+PKGS_TO_INSTALL+=(dnsmasq libvirt qemu-desktop virt-manager)
 
 # network filesystems
 PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
@@ -65,13 +65,13 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 
 
 # Desktop Environment (X11; because NVIDIA)
-PKGS_TO_INSTALL+=(xorg-server xorg-xinit xorg-xsetroot xsel bspwm dunst feh i3lock jq picom polybar rofi socat sxhkd wmctrl sddm lxsession)
+PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq lxsession picom polybar rofi sddm socat sxhkd wmctrl xorg-server xorg-xinit xorg-xsetroot xsel)
 
 # GUI
-PKGS_TO_INSTALL+=(alacritty bitwarden firefox meld mpv slurp otf-overpass ksnip noto-fonts-emoji pavucontrol thunar gnome-disk-utility)
+PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv noto-fonts-emoji otf-overpass pavucontrol slurp thunar)
 
 # Sound
-PKGS_TO_INSTALL+=(pipewire pipewire-pulse pamixer wireplumber)
+PKGS_TO_INSTALL+=(pamixer pipewire pipewire-pulse wireplumber)
 #PKGS_TO_INSTALL+=(alsa-firmware alsa-lib alsa-utils gst-plugins-good gstreamer libao libcanberra-gstreamer libcanberra-pulse pulseaudio pulseaudio-alsa)
 
 # ???
@@ -80,7 +80,7 @@ PKGS_TO_INSTALL+=(pipewire pipewire-pulse pamixer wireplumber)
 # xorg
 #PKGS_TO_INSTALL+=(libdrm libva-mesa-driver qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl qemu-hw-s390x-virtio-gpu-ccw xf86-input-libinput xf86-input-synaptics xf86-input-wacom xf86-video-qxl xf86-video-vmware xorg xorg-apps xorg-fonts-alias xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
-#PKGS_TO_INSTALL+=(xf86-video-amdgpu radeontop vulkan-radeon)
+#PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
 # install x86 microcode
 if [[ "$1" == "amd" ]]; then
