@@ -9,7 +9,7 @@ pacman --sync --refresh --refresh
 ################################################################################
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-firmware linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash cron curl dhcpcd dnsutils doas efibootmgr findutils grub iputils ksh less libdrm linux-firmware linux linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call iasl)
@@ -45,7 +45,7 @@ PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 PKGS_TO_INSTALL+=(rustup)
 
 # kernel devel
-PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-lts-headers make perl tar xmlto xz)
+PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers linux-lts-headers make perl tar xmlto xz)
 
 # virtualisation
 PKGS_TO_INSTALL+=(dnsmasq libvirt qemu-desktop virt-manager)
