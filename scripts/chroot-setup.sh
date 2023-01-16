@@ -202,6 +202,9 @@ systemctl enable libvirtd.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
 
+# open a temporary shell for user "PRATHAM" to edit file(s)
+sudo -u pratham bash
+
 # update bootloader
 bootctl update
 
