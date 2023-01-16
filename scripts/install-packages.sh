@@ -65,7 +65,7 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 
 
 # Desktop Environment (X11; because NVIDIA)
-PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq lxsession picom polybar rofi sddm socat sxhkd wmctrl xorg-server xorg-xinit xorg-xsetroot xsel)
+PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq picom polybar rofi sddm socat sxhkd wmctrl xorg-server xorg-xinit xorg-xsetroot xsecurelock xsel)
 
 # GUI
 PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv noto-fonts-emoji otf-overpass pavucontrol slurp thunar)
