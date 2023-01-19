@@ -33,7 +33,7 @@ PKGS_TO_INSTALL+=(aria2 wget yt-dlp)
 PKGS_TO_INSTALL+=(android-tools)
 
 # *utils-rust
-PKGS_TO_INSTALL+=(bat fd ripgrep tre tree)
+PKGS_TO_INSTALL+=(bat dog fd ripgrep tre tree)
 
 # system utilities
 PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools tldr usbutils wol)
