@@ -33,16 +33,16 @@ PKGS_TO_INSTALL+=(aria2 wget yt-dlp)
 PKGS_TO_INSTALL+=(android-tools)
 
 # *utils-rust
-PKGS_TO_INSTALL+=(bat dog fd ripgrep tre tree)
+PKGS_TO_INSTALL+=(bat choose dog dust exa fd hyperfine ripgrep skim tealdeer tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools tldr usbutils wol)
+PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools usbutils wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(rustup)
+PKGS_TO_INSTALL+=(cargo-audit rustup)
 
 # kernel devel
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers linux-lts-headers make perl tar xmlto xz)
