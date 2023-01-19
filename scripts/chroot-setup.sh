@@ -138,23 +138,7 @@ systemctl unmask nvidia-suspend nvidia-hibernate nvidia-resume
 systemctl enable nvidia-suspend nvidia-hibernate nvidia-resume
 
 mkdir -p /etc/pacman.d/hooks
-cat <<EOF > /etc/pacman.d/hooks/nvidia.hook
-[Trigger]
-Operation=Install
-Operation=Upgrade
-Operation=Remove
-Type=Package
-Target=nvidia-lts
-Target=linux-lts
-Target=linux-lts-headers
-
-[Action]
-Description=Update NVIDIA module in initcpio
-Depends=mkinitcpio
-When=PostTransaction
-NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
-EOF
+cp /chroot-scripts/nvidia.hook /etc/pacman.d/hooks/nvidia.hook
 
 
 ################################################################################
