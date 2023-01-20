@@ -8,7 +8,7 @@ pacman --sync --refresh --refresh
 ################################################################################
 
 # absolutely necessary for _MY_ experience
-PKGS_TO_INSTALL=(base bash bind cron curl dhcpcd efibootmgr findutils grub iputils ksh less libdrm linux-firmware linux linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager opendoas openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+PKGS_TO_INSTALL=(base bash bind cron curl dhcpcd efibootmgr findutils grub iputils ksh less libdrm linux linux-firmware linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager opendoas openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
 PKGS_TO_INSTALL+=(acpi_call)
@@ -41,7 +41,7 @@ PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools usbutils wol)
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(cargo-audit rustup)
+PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch rustup)
 
 # kernel devel
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers linux-lts-headers make perl tar xmlto xz)
@@ -62,7 +62,7 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 # Display Server (Wayland)
 #PKGS_TO_INSTALL+=(libdrm wayland)
 
-# Desktop Environment (X11; because NVIDIA)
+# bspwm (X11 for now because NVIDIA)
 PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq picom polybar rofi sddm socat sxhkd wmctrl)
 
 # GUI
@@ -76,7 +76,7 @@ PKGS_TO_INSTALL+=(pamixer pipewire pipewire-pulse wireplumber)
 #PKGS_TO_INSTALL+=(exfatprogs netcfg)
 
 # xorg
-PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-apps xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils xorg-server xorg-xinit xorg-xsetroot xsecurelock xsel)
+PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-apps xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils xorg-xsetroot xsecurelock xsel)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
 #PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
