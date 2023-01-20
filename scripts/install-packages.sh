@@ -63,7 +63,7 @@ PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 #PKGS_TO_INSTALL+=(libdrm wayland)
 
 # display server (xorg)
-PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-apps xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils xorg-xsetroot xsecurelock xsel)
+PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xbacklight xorg-xdpyinfo xorg-xinit xorg-xkbutils xorg-xprop xorg-xrandr xorg-xsetroot xsecurelock xsel)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
 #PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
