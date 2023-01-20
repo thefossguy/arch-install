@@ -59,26 +59,23 @@ PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver mesa vulkan-intel)
 PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
 
-# Display Server (Wayland)
+# display server (Wayland)
 #PKGS_TO_INSTALL+=(libdrm wayland)
+
+# display server (xorg)
+PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-apps xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils xorg-xsetroot xsecurelock xsel)
+#PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
+#PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
 # bspwm (X11 for now because NVIDIA)
 PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq picom polybar rofi sddm socat sxhkd wmctrl)
 
-# GUI
+# GUI packages
 PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv otf-overpass pavucontrol slurp thunar)
 
-# Sound
+# sound (pipewire)
 PKGS_TO_INSTALL+=(pamixer pipewire pipewire-pulse wireplumber)
 #PKGS_TO_INSTALL+=(alsa-firmware alsa-lib alsa-utils gst-plugins-good gstreamer libao libcanberra-gstreamer libcanberra-pulse pulseaudio pulseaudio-alsa)
-
-# ???
-#PKGS_TO_INSTALL+=(exfatprogs netcfg)
-
-# xorg
-PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synaptics xorg xorg-apps xorg-fonts-encodings xorg-fonts-misc xorg-server xorg-xauth xorg-xinit xorg-xkbutils xorg-xsetroot xsecurelock xsel)
-#PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver vulkan-intel)
-#PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
 # install x86 microcode
 if [[ "$1" == "amd" ]]; then
