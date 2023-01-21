@@ -68,7 +68,7 @@ PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synapt
 #PKGS_TO_INSTALL+=(radeontop vulkan-radeon xf86-video-amdgpu)
 
 # bspwm (X11 for now because NVIDIA)
-PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq picom polybar rofi sddm socat sxhkd wmctrl)
+PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq picom polybar rofi sddm socat sxhkd wmctrl xdg-desktop-portal-gtk)
 
 # GUI packages
 PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv otf-overpass pavucontrol slurp thunar)
