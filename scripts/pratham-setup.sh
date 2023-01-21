@@ -25,6 +25,7 @@ fi
 WHAT_IS_MY_TZ=$(readlink /etc/localtime)
 if [[ ! $WHAT_IS_MY_TZ =~ "Asia/Kolkata" ]]; then
     timedatectl set-timezone Asia/Kolkata
+    ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
     WHAT_IS_MY_TZ=whoopsie
 fi
 
