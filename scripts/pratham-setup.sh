@@ -8,7 +8,7 @@
 export EDITOR=/usr/bin/nvim
 
 # setup sudo access for pratham
-/usr/bin/sudo -l -U pratham >/dev/null 2>&1
+/usr/bin/sudo -l -U pratham > /dev/null
 if [[ $? -ne 0 ]]; then
     doas visudo
 fi
@@ -17,6 +17,7 @@ fi
 WHAT_IS_MY_HOSTNAME=$(cat /etc/hostname)
 if [[ $WHAT_IS_MY_HOSTNAME != "flameboi" ]]; then
     hostnamectl set-hostname flameboi
+    echo "flameboi" | doas tee /etc/hostname
     WHAT_IS_MY_HOSTNAME=whoopsie
 fi
 
@@ -119,9 +120,8 @@ doas pacman --sync --refresh --refresh --sysupgrade
 
 # rust-lang
 rustup default stable
-rustup component add rust-src rust-analyzer
-rustup component add rust-analysis
-cargo install cargo-outdated cargo-tree
+rustup update stable
+rustup component add rust-src rust-analyzer rust-analysis
 
 
 # get dotfiles
@@ -146,6 +146,34 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.github.tchx84.Flatseal io.gitlab.librewolf-community org.raspberrypi.rpi-imager
+
+################################################################################
+# VIRSH POOLS + NETWORK
+################################################################################
+
+LIBVIRTD_RESTART=no
+
+gropus | grep "libvirt" || doas adduser pratham libvirt
+gropus | grep "kvm" || doas adduser pratham kvm
+
+# network
+doas virsh net-info default | grep "Autostart" | grep "no" && doas virsh net-autostart default
+
+# storage pool
+doas virsh pool-dumpxml default | grep "/flameboi_st/vm-store" > /dev/null
+if [[ $? -ne 0 ]]; then
+    doas virsh pool-destroy default
+    doas virsh pool-undefine default
+    doas virsh pool-define-as --name default --type dir --target /flameboi_st/vm-store
+    doas virsh pool-autostart default
+    doas virsh pool-start default
+    LIBVIRTD_RESTART=yes
+fi
+
+# restart libvirtd if necessary
+if [[ "$LIBVIRTD_RESTART" == "yes" ]]; then
+    doas systemctl restart libvirtd
+fi
 
 
 ################################################################################
@@ -195,9 +223,10 @@ echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please 
 if ! command -v zpool > /dev/null; then
     lsmod | grep zfs
     if [[ $? -ne 0 ]]; then
-        echo "ZFS Kernel module is not loaded. Please run the \`sudo modprobe zfs\` command and reboot."
+        echo "ZFS Kernel module is not loaded. Please run the \`doas modprobe zfs\` command and reboot."
     fi
-    sudo systemctl enable --now zfs-import-cache.service zfs-import-scan.service zfs-mount.service zfs-share.service zfs.target zfs-zed.service
-    sudo zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
+    doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-import.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+    doas zpool import 16601987433518749526
+    doas zpool import 12327394492612946617
+    doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
 fi
-echo -e "\n\nDotfiles have been copied, but some files are yet to be copied. Your manual intervention is necessary. Please copy the contents of the \"_OTHER\" directory manually."

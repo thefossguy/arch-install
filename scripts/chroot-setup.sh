@@ -6,14 +6,15 @@
 
 ################################################################################
 ROOT_CRONTAB="# remove cache every 2 hours and update local db
-0 */2 * * * paccache -r >/dev/null 2>&1
-0 * * * * pacman --sync --refresh >/dev/null 2>&1
+0 */2 * * * paccache -r > /dev/null
+0 * * * * pacman --sync --refresh > /dev/null
+0 * * * * pacman --files --refresh > /dev/null
 
 # update the on-disk database every 6 hours
-0 */6 * * * updatedb >/dev/null 2>&1
+0 */6 * * * updatedb > /dev/null
 
 # zfs scrub
-0 0 1,15 * * /usr/bin/zpool scrub
+0 0 1,15 * * /usr/bin/zpool scrub > /dev/null
 "
 ################################################################################
 
@@ -201,6 +202,10 @@ systemctl enable sddm.service
 systemctl enable libvirtd.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
+systemctl enable hdd-standby-on-boot.service
+systemctl enable hdd-standby-on-resume.service
+systemctl enable import-flameboi-st.service
+systemctl enable import-heathen-disk.service
 
 # update bootloader
 bootctl update

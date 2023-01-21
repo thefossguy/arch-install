@@ -8,7 +8,7 @@
 ################################################################################
 
 # check for internet connectivity
-ping -c 1 google.com >/dev/null 2>&1
+ping -c 1 google.com > /dev/null
 if [[ ! $? -eq 0 ]]; then
     echo "No internet access :("
     exit 1
@@ -36,7 +36,7 @@ MIRRORLIST_FILE="/etc/pacman.d/mirrorlist"
 cp mirrorlist $MIRRORLIST_FILE
 
 # check if reflector is already running
-pgrep reflector >/dev/null
+pgrep reflector > /dev/null
 if [[ $? -eq 0 ]]; then
     IS_REFLECTOR_RUNNING=y
 else
@@ -54,7 +54,7 @@ if [[ ! -f "$MIRRORLIST_FILE" && $IS_REFLECTOR_RUNNING == "n" ]]; then
         --sort rate \
         --fastest 10 \
         --protocol https \
-        --save /etc/pacman.d/mirrorlist >/dev/null 2>&1 &
+        --save /etc/pacman.d/mirrorlist > /dev/null
 fi
 
 

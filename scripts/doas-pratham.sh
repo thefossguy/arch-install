@@ -17,9 +17,12 @@ rsync \
     --itemize-changes --checksum --perms \
     --exclude=".git" --exclude=".gitignore" --exclude="README.md" --exclude="run_me.sh" \
     ../dotfiles/ ~/
+
+cp -v _OTHER/flameboi/etc/systemd/system/*.service /etc/systemd/system/
 popd
 rm -rf dotfiles
 popd
+
 
 ################################################################################
 # NEOVIM PLUGINS
