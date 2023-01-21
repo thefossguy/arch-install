@@ -29,6 +29,12 @@ if [[ ! $WHAT_IS_MY_TZ =~ "Asia/Kolkata" ]]; then
     WHAT_IS_MY_TZ=whoopsie
 fi
 
+ETH_DEV_NAME=$(nmcli connection show  | grep ethernet | choose -f "  " 0)
+nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.dns:" | grep "1.1.1.2,1.0.0.2" || nmcli connection modify "$ETH_DEV_NAME" ipv4.dns "1.1.1.2,1.0.0.2"
+nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.ignore-auto-dns" | grep "yes" || nmcli connection modify "$ETH_DEV_NAME" ipv4.ignore-auto-dns yes
+doas nmcli connection reload "$ETH_DEV_NAME"
+
+
 # reboot to bring hostname in effect
 if [[ $WHAT_IS_MY_TZ == "whoopsie" || $WHAT_IS_MY_HOSTNAME == "whoopsie" ]]; then
     systemctl reboot
