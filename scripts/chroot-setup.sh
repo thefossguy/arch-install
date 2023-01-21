@@ -80,7 +80,11 @@ usermod --password $(echo pratham | openssl passwd -1 -stdin) pratham
 usermod --password $(echo root | openssl passwd -1 -stdin) root
 
 # setup doas for pratham
-echo "permit persist keepenv pratham" | tee -a /etc/doas.conf
+cat <<EOF > /etc/doas.conf
+permit persist keepenv pratham
+permit nopass keepenv pratham cmd hdparm
+permit nopass keepenv pratham cmd dmesg
+EOF
 
 # setup root user's cron jobs
 echo "${ROOT_CRONTAB}" | crontab -
