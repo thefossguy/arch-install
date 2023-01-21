@@ -91,6 +91,8 @@ echo "${ROOT_CRONTAB}" | crontab -
 
 # copy dotfiles
 sudo -u pratham /chroot-scripts/doas-pratham.sh
+cp /home/pratham/my-git-repos/dotfiles/_OTHER/flameboi/etc/systemd/system/*.service /etc/systemd/system/
+rm -rf /home/pratham/my-git-repos/dotfiles
 
 
 ################################################################################
