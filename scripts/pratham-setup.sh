@@ -250,3 +250,9 @@ doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
 
 tput -x clear
 echo -e "The setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
+echo ""
+echo -e "Open Firefox and do the following:
+1. Open \"about:config\"
+2. Search for boolean \"browser.search.separatePrivateDefault.ui.enabled\"
+3. Switch the value to \"true\"
+4. Sign into the Firefox account"
