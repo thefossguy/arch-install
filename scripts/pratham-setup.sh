@@ -59,11 +59,11 @@ if [[ ! -d $HOME/.ssh ]]; then
     chmod 700 $HOME/.ssh
 fi
 pushd $HOME/.ssh
-generate_keys "bluefeds"
-generate_keys "flameboi"
 generate_keys "gitea"
 generate_keys "github"
 generate_keys "gitlab"
+generate_keys "reddish"
+generate_keys "rustyvm"
 generate_keys "sentinel"
 popd
 
