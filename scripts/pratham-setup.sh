@@ -160,8 +160,8 @@ flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.gith
 
 LIBVIRTD_RESTART=no
 
-groups | grep "libvirt" || doas adduser pratham libvirt
-groups | grep "kvm" || doas adduser pratham kvm
+groups | grep "libvirt" > /dev/null || doas adduser pratham libvirt
+groups | grep "kvm" > /dev/null || doas adduser pratham kvm
 
 # network
 doas virsh net-info default | grep "Autostart" | grep "no" && doas virsh net-autostart default
@@ -227,13 +227,14 @@ pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
 
 tput -x clear
 echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
-if ! command -v zpool > /dev/null; then
+if command -v zpool > /dev/null; then
     lsmod | grep zfs
     if [[ $? -ne 0 ]]; then
         echo "ZFS Kernel module is not loaded. Please run the \`doas modprobe zfs\` command and reboot."
+    else
+        doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-import.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+        doas zpool import 16601987433518749526
+        doas zpool import 12327394492612946617
+        doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
     fi
-    doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-import.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
-    doas zpool import 16601987433518749526
-    doas zpool import 12327394492612946617
-    doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
 fi
