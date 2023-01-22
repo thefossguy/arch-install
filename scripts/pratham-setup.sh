@@ -160,8 +160,8 @@ flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.gith
 
 LIBVIRTD_RESTART=no
 
-gropus | grep "libvirt" || doas adduser pratham libvirt
-gropus | grep "kvm" || doas adduser pratham kvm
+groups | grep "libvirt" || doas adduser pratham libvirt
+groups | grep "kvm" || doas adduser pratham kvm
 
 # network
 doas virsh net-info default | grep "Autostart" | grep "no" && doas virsh net-autostart default
