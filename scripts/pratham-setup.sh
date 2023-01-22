@@ -147,8 +147,10 @@ rsync \
 # dark mode (gtk)
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
-# podman?
-#grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
+# podman
+if ! command -v podman > /dev/null; then
+    grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
+fi
 
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -164,7 +166,7 @@ groups | grep "libvirt" > /dev/null || doas adduser pratham libvirt
 groups | grep "kvm" > /dev/null || doas adduser pratham kvm
 
 # network
-doas virsh net-info default | grep "Autostart" | grep "no" && doas virsh net-autostart default
+doas virsh net-info default | grep "Autostart" | grep "no" > /dev/null && doas virsh net-autostart default
 
 # storage pool
 doas virsh pool-dumpxml default | grep "/flameboi_st/vm-store" > /dev/null
@@ -209,7 +211,6 @@ fi
 # install packages if not installed
 pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
 pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
-pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
 
 # AUR pkgs
 #paru -S noisetorch ssmtp
@@ -222,20 +223,30 @@ pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
 
 
 ################################################################################
+# ZFS setup
+################################################################################
+
+pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
+
+if command -v zpool > /dev/null; then
+    lsmod | grep zfs > /dev/null
+    if [[ $? -ne 0 ]]; then
+        doas modprobe zfs
+    fi
+fi
+
+doas systemctl unmask zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+
+zpool list | grep "flameboi_st" > /dev/null  || doas zpool import 16601987433518749526
+zpool list | grep "heathen_disk" > /dev/null || doas zpool import 12327394492612946617
+
+doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
+
+
+################################################################################
 # WRAP UP
 ################################################################################
 
 tput -x clear
-echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
-if command -v zpool > /dev/null; then
-    lsmod | grep zfs > /dev/null
-    if [[ $? -ne 0 ]]; then
-        echo "ZFS Kernel module is not loaded. Please run the \`doas modprobe zfs\` command and reboot."
-    else
-        doas systemctl unmask zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
-        doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
-        doas zpool import 16601987433518749526
-        doas zpool import 12327394492612946617
-        doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
-    fi
-fi
+echo -e "The setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
