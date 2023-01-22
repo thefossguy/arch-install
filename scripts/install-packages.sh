@@ -32,7 +32,7 @@ PKGS_TO_INSTALL+=(aria2 wget yt-dlp)
 PKGS_TO_INSTALL+=(android-tools)
 
 # *utils-rust
-PKGS_TO_INSTALL+=(bat choose dog dust exa fd hyperfine ripgrep skim tealdeer tre tree procs dua)
+PKGS_TO_INSTALL+=(bat choose dog dua dust exa fd hyperfine procs ripgrep skim tealdeer tre tree)
 
 # system utilities
 PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools usbutils wol)
