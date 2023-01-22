@@ -30,8 +30,8 @@ if [[ ! $WHAT_IS_MY_TZ =~ "Asia/Kolkata" ]]; then
 fi
 
 ETH_DEV_NAME=$(nmcli connection show  | grep ethernet | choose -f "  " 0)
-nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.dns:" | grep "1.1.1.2,1.0.0.2" || nmcli connection modify "$ETH_DEV_NAME" ipv4.dns "1.1.1.2,1.0.0.2"
-nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.ignore-auto-dns" | grep "yes" || nmcli connection modify "$ETH_DEV_NAME" ipv4.ignore-auto-dns yes
+nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.dns:" | grep "1.1.1.2,1.0.0.2" > /dev/null || nmcli connection modify "$ETH_DEV_NAME" ipv4.dns "1.1.1.2,1.0.0.2"
+nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.ignore-auto-dns" | grep "yes" > /dev/null || nmcli connection modify "$ETH_DEV_NAME" ipv4.ignore-auto-dns yes
 doas nmcli connection reload "$ETH_DEV_NAME"
 
 
@@ -228,11 +228,12 @@ pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
 tput -x clear
 echo -e "\n\nThe setup appears to have completed (as far as I can tell). Please scroll up and verify yourself too!"
 if command -v zpool > /dev/null; then
-    lsmod | grep zfs
+    lsmod | grep zfs > /dev/null
     if [[ $? -ne 0 ]]; then
         echo "ZFS Kernel module is not loaded. Please run the \`doas modprobe zfs\` command and reboot."
     else
-        doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-import.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+        doas systemctl unmask zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
+        doas systemctl enable zfs-import-cache.service zfs-import-scan.service zfs-load-key.service zfs-mount.service zfs-volume-wait.service zfs-zed.service
         doas zpool import 16601987433518749526
         doas zpool import 12327394492612946617
         doas zpool set cachefile=/etc/zfs/zpool.cache heathen_disk
