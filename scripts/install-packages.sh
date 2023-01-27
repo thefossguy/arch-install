@@ -43,7 +43,7 @@ PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 # software devel
 PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch rustup)
 # cross compilation
-PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
+PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-elf-newlib riscv64-linux-gnu-gcc)
 
 # kernel devel
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers linux-lts-headers make perl tar xmlto xz)
