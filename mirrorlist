@@ -3,28 +3,28 @@
 ################################################################################
 
 # With:       reflector --connection-timeout 1 --latest 200 --sort age --fastest 20 --protocol https
-# When:       2023-01-22 04:10:51 UTC
+# When:       2023-01-29 13:14:19 UTC
 # From:       https://archlinux.org/mirrors/status/json/
-# Retrieved:  2023-01-22 04:10:51 UTC
-# Last Check: 2023-01-22 04:05:21 UTC
+# Retrieved:  2023-01-29 13:14:19 UTC
+# Last Check: 2023-01-29 13:06:44 UTC
 
 Server = https://mirror.theo546.fr/archlinux/$repo/os/$arch
-Server = https://packages.oth-regensburg.de/archlinux/$repo/os/$arch
-Server = https://de.arch.mirror.kescher.at/$repo/os/$arch
-Server = https://ftp.fau.de/archlinux/$repo/os/$arch
-Server = https://mirror.yal.sl-chat.ru/archlinux/$repo/os/$arch
-Server = https://mirrors.xtom.ee/archlinux/$repo/os/$arch
+Server = https://mirror.eloteam.tk/archlinux/$repo/os/$arch
+Server = https://archlinux.koyanet.lv/archlinux/$repo/os/$arch
 Server = https://mirror.xtom.com.hk/archlinux/$repo/os/$arch
-Server = https://coresite.mm.fcix.net/archlinux/$repo/os/$arch
-Server = https://super.quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
-Server = https://mirrors.xtom.nl/archlinux/$repo/os/$arch
-Server = https://mirror.jingk.ai/archlinux/$repo/os/$arch
-Server = https://mirrors.cat.net/archlinux/$repo/os/$arch
-Server = https://mirror.selfnet.de/archlinux/$repo/os/$arch
-Server = https://pkg.adfinis.com/archlinux/$repo/os/$arch
-Server = https://archlinux.astra.in.ua/$repo/os/$arch
+Server = https://forksystems.mm.fcix.net/archlinux/$repo/os/$arch
+Server = https://ridgewireless.mm.fcix.net/archlinux/$repo/os/$arch
+Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
+Server = https://iad.mirrors.misaka.one/archlinux/$repo/os/$arch
+Server = https://mirror.stjschools.org/arch/$repo/os/$arch
+Server = https://mirror.hoster.kz/archlinux/$repo/os/$arch
+Server = https://archlinux.mirror.digitalpacific.com.au/$repo/os/$arch
+Server = https://ftp.spline.inf.fu-berlin.de/mirrors/archlinux/$repo/os/$arch
+Server = https://mirror.wtnet.de/archlinux/$repo/os/$arch
+Server = https://mirror.ps.kz/archlinux/$repo/os/$arch
+Server = https://arch.lucassymons.net/$repo/os/$arch
+Server = https://mirror.sabay.com.kh/archlinux/$repo/os/$arch
 Server = https://mirror.sg.gs/archlinux/$repo/os/$arch
-Server = https://mirror.ihost.md/archlinux/$repo/os/$arch
 Server = https://mirror.i3d.net/pub/archlinux/$repo/os/$arch
-Server = https://mirror-hk.koddos.net/archlinux/$repo/os/$arch
-Server = https://arch.yourlabs.org/$repo/os/$arch
+Server = https://archlinux.astra.in.ua/$repo/os/$arch
