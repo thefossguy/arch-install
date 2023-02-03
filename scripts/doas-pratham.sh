@@ -31,4 +31,19 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 nvim +'PlugInstall' +'q' +'q'
 nvim +'checkhealth telescope' +'q' +'q'
 
+
+################################################################################
+# PARU
+################################################################################
+
+mkdir paru
+pushd paru
+wget "https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst"
+tar xf "paru-v1.11.2-x86_64.tar.zst"
+./paru -Sy paru-bin
+popd
+
+rm -rf paru
+
+
 popd

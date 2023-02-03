@@ -192,25 +192,6 @@ fi
 # AUR/PARU
 ################################################################################
 
-# do I have paru?
-if ! command -v paru > /dev/null; then
-
-    # build paru
-    doas pacman --sync --refresh --refresh --sysupgrade
-    doas pacman --needed base-devel
-
-    git clone --depth 1  https://aur.archlinux.org/paru.git /tmp/paru-tmp-clone
-    pushd /tmp/paru-tmp-clone
-    makepkg -si
-
-    if [[ $? -ne 0 ]]; then
-        echo "paru wasn't installed successfully :("
-        exit 1
-    fi
-
-    popd
-fi
-
 # install packages if not installed
 pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
 pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
