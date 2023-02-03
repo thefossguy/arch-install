@@ -198,6 +198,14 @@ fi
 # AUR/PARU
 ################################################################################
 
+if ! command -v paru > /dev/null; then
+    pushd /tmp
+    wget "https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst"
+    tar xf "paru-v1.11.2-x86_64.tar.zst"
+    ./paru -Sy paru-bin
+    popd
+fi
+
 # install packages if not installed
 pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
 pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
