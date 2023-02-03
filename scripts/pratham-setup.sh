@@ -126,6 +126,12 @@ function git_repo_check()
 doas pacman --sync --refresh --refresh --sysupgrade
 
 # rust-lang
+if ! command -v rustup > /dev/null; then
+    pushd /tmp
+    curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs -o rust.sh
+    bash rust.sh
+    popd
+fi
 rustup default stable
 rustup update stable
 rustup component add rust-src rust-analyzer rust-analysis
