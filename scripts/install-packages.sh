@@ -17,7 +17,7 @@ PKGS_TO_INSTALL+=(acpi_call xfce4-power-manager)
 PKGS_TO_INSTALL+=(firewalld)
 
 # add-on
-PKGS_TO_INSTALL+=(ffmpeg flatpak light mediainfo)
+PKGS_TO_INSTALL+=(ffmpeg flatpak imagemagick light mediainfo)
 
 # monitoring
 PKGS_TO_INSTALL+=(bandwhich btop htop iotop iperf iperf3 nload)
