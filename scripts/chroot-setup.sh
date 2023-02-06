@@ -14,7 +14,7 @@ ROOT_CRONTAB="# remove cache every 2 hours and update local db
 0 */6 * * * updatedb > /dev/null
 
 # zfs scrub
-0 0 1,15 * * /usr/bin/zpool scrub > /dev/null
+0 12 1,15 * * /usr/bin/zpool scrub > /dev/null
 "
 ################################################################################
 
