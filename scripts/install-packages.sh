@@ -73,7 +73,7 @@ PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synapt
 PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq lxsession picom polybar rofi sddm socat sxhkd wmctrl xdg-desktop-portal-gtk)
 
 # GUI packages
-PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv otf-overpass pavucontrol slurp thunar)
+PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility ksnip meld mpv neovide otf-overpass pavucontrol slurp thunar)
 
 # sound (pipewire)
 PKGS_TO_INSTALL+=(pamixer pipewire pipewire-pulse wireplumber)
