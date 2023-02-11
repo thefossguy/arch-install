@@ -130,6 +130,14 @@ rustup default stable
 rustup update stable
 rustup component add rust-src rust-analyzer rust-analysis
 
+# install Packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+cat <<EOF > /tmp/setup-neovim
+1. Install plugins using `:PackerSync`
+2. Update treesitter using `:TSUpdate`
+3. Check health of the `telescope` plugin using `:checkhealth telescope`
+EOF
+nvim /tmp/setup-neovim
 
 # get dotfiles
 echo -ne "\n\n\n\n"
