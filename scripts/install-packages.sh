@@ -11,7 +11,7 @@ pacman --sync --refresh --refresh
 PKGS_TO_INSTALL=(base bash bind cron curl dhcpcd efibootmgr findutils iputils keepassxc ksh less libdrm linux linux-firmware linux-lts lsb-release lsof man man-db man-pages nano neovim networkmanager opendoas openssh openssl os-prober pacman-contrib reflector rsync tmux wireguard-tools zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # power management
-PKGS_TO_INSTALL+=(acpi_call xfce4-power-manager)
+PKGS_TO_INSTALL+=(acpi_call lm_sensors xfce4-power-manager)
 
 # firewall
 PKGS_TO_INSTALL+=(firewalld)
@@ -41,7 +41,7 @@ PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools usbutils wol)
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch rustup)
+PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch picocom rustup)
 # cross compilation
 PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
 
