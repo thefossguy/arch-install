@@ -20,7 +20,7 @@ PKGS_TO_INSTALL+=(firewalld)
 PKGS_TO_INSTALL+=(ffmpeg flatpak imagemagick light mediainfo)
 
 # monitoring
-PKGS_TO_INSTALL+=(bandwhich btop htop iotop iperf iperf3 nload)
+PKGS_TO_INSTALL+=(bandwhich btop htop inxi iotop iperf iperf3 nload)
 
 # containersation stuff
 #PKGS_TO_INSTALL+=(aardvark-dns bridge-utils fuse-overlayfs podman podman-compose podman-dnsname slirp4netns)
