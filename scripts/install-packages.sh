@@ -49,7 +49,7 @@ PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
 PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers linux-lts-headers make perl tar xmlto xz)
 
 # virtualisation
-PKGS_TO_INSTALL+=(dnsmasq libvirt qemu-desktop virt-manager)
+PKGS_TO_INSTALL+=(dnsmasq guestfs-tools libvirt qemu-desktop virt-manager)
 
 # network filesystems
 PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
