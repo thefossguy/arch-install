@@ -203,6 +203,7 @@ EOF
 
 # enable services
 systemctl enable firewalld.service
+systemctl enable systemd-timesyncd.service
 systemctl enable systemd-boot-update.service
 systemctl enable sddm.service
 systemctl enable libvirtd.service
