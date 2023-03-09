@@ -41,7 +41,7 @@ PKGS_TO_INSTALL+=(hd-idle hdparm mlocate smartmontools usbutils wol)
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch picocom rustup)
+PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch lazygit picocom rustup)
 # cross compilation
 PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
 
