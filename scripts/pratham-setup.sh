@@ -163,6 +163,8 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 # podman
 if ! command -v podman > /dev/null; then
     grep net.ipv4.ping_group_range /etc/sysctl.conf || echo "net.ipv4.ping_group_range=0 $(grep pratham /etc/subuid | awk -F ":" '{print $2 + $3}')" | doas tee -a /etc/sysctl.conf
+    grep "kernel.unprivileged_userns_clone=1" /etc/sysctl.conf || echo "kernel.unprivileged_userns_clone=1" | doas tee -a /etc/sysctl.conf
+    podman system migrate
 fi
 
 # tldr
