@@ -59,17 +59,9 @@ if [[ ! -d $HOME/.ssh ]]; then
     chmod 700 $HOME/.ssh
 fi
 pushd $HOME/.ssh
-generate_keys "gitea"
-generate_keys "github"
-generate_keys "gitlab"
-
-generate_keys "reddish"
-generate_keys "sentinel"
-
-generate_keys "vasudev"
-generate_keys "riscyrock"
-
-generate_keys "rustyvm"
+for KEY in {gitea,github,gitlab,reddish,sentinel,vasudev,riscyrock,rustyvm}; do
+    generate_keys "$KEY"
+done
 popd
 
 
