@@ -29,11 +29,11 @@ if [[ ! $WHAT_IS_MY_TZ =~ "Asia/Kolkata" ]]; then
     WHAT_IS_MY_TZ=whoopsie
 fi
 
+# setup network
 ETH_DEV_NAME=$(nmcli connection show  | grep ethernet | choose -f "  " 0)
 nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.dns:" | grep "1.1.1.2,1.0.0.2" > /dev/null || nmcli connection modify "$ETH_DEV_NAME" ipv4.dns "1.1.1.2,1.0.0.2"
 nmcli connection show "$ETH_DEV_NAME" | grep "ipv4.ignore-auto-dns" | grep "yes" > /dev/null || nmcli connection modify "$ETH_DEV_NAME" ipv4.ignore-auto-dns yes
 doas nmcli connection reload "$ETH_DEV_NAME"
-
 
 # reboot to bring hostname in effect
 if [[ $WHAT_IS_MY_TZ == "whoopsie" || $WHAT_IS_MY_HOSTNAME == "whoopsie" ]]; then
@@ -134,15 +134,6 @@ doas pacman --sync --refresh --refresh --sysupgrade
 rustup default stable
 rustup update stable
 rustup component add rust-src rust-analyzer rust-analysis
-
-# install Packer.nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-cat <<EOF > /tmp/setup-neovim
-1. Install plugins using `:PackerSync`
-2. Update treesitter using `:TSUpdate`
-3. Check health of the `telescope` plugin using `:checkhealth telescope`
-EOF
-nvim /tmp/setup-neovim
 
 # get dotfiles
 echo -ne "\n\n\n\n"
