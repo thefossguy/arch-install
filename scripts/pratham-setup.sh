@@ -95,7 +95,7 @@ Host git.thefossguy.com
 EOF
     cat $HOME/.ssh/gitea.pub
     echo -e "\n\n\n\nPopulate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
-    vim ~/.ssh/config
+    /usr/bin/vim ~/.ssh/config
 fi
 
 
