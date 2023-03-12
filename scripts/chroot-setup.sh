@@ -6,15 +6,16 @@
 
 ################################################################################
 ROOT_CRONTAB="# remove cache every 2 hours and update local db
-0 */2 * * * paccache -r > /dev/null
-0 * * * * pacman --sync --refresh > /dev/null
-0 * * * * pacman --files --refresh > /dev/null
+0 */2 * * * paccache -r > /dev/null 2>&1
+0 */2 * * * pacman -Sc > /dev/null 2>&1
+0 * * * * pacman --sync --refresh > /dev/null 2>&1
+0 * * * * pacman --files --refresh > /dev/null 2>&1
 
 # update the on-disk database every 6 hours
-0 */6 * * * updatedb > /dev/null
+0 */6 * * * updatedb > /dev/null 2>&1
 
 # zfs scrub
-0 12 1,15 * * /usr/bin/zpool scrub > /dev/null
+0 12 1,15 * * /usr/bin/zpool scrub > /dev/null 2>&1
 "
 ################################################################################
 
