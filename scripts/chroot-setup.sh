@@ -84,6 +84,7 @@ cat <<EOF > /etc/doas.conf
 permit persist keepenv pratham
 permit nopass keepenv pratham cmd hdparm
 permit nopass keepenv pratham cmd dmesg
+permit nopass keepenv pratham cmd picocom
 EOF
 
 # setup root user's cron jobs
