@@ -5,7 +5,7 @@
 ################################################################################
 
 # for visudo
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
 
 # setup sudo access for pratham
 /usr/bin/sudo -l -U pratham > /dev/null
@@ -83,8 +83,7 @@ else
 
 fi
 
-
-# set the hostname
+# set the hostname in ssh config
 if [[ $EDIT_SSH_CONF == true ]]; then
     tput -x clear
     cat <<EOF > $HOME/.ssh/config
@@ -96,7 +95,7 @@ Host git.thefossguy.com
 EOF
     cat $HOME/.ssh/gitea.pub
     echo -e "\n\n\n\nPopulate Hostname (IP addr) for \"git.thefossguy.com\" in ~/.ssh/config"
-    nvim ~/.ssh/config
+    vim ~/.ssh/config
 fi
 
 
