@@ -156,11 +156,10 @@ tldr --update
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.github.tchx84.Flatseal io.gitlab.librewolf-community org.raspberrypi.rpi-imager
 
+#
 ################################################################################
 # VIRSH POOLS + NETWORK
 ################################################################################
-
-LIBVIRTD_RESTART=no
 
 groups | grep "libvirt" > /dev/null || doas adduser pratham libvirt
 groups | grep "kvm" > /dev/null || doas adduser pratham kvm
@@ -169,6 +168,7 @@ groups | grep "kvm" > /dev/null || doas adduser pratham kvm
 doas virsh net-info default | grep "Autostart" | grep "no" > /dev/null && doas virsh net-autostart default
 
 # storage pool
+LIBVIRTD_RESTART=no
 doas virsh pool-dumpxml default | grep "/flameboi_st/vm-store" > /dev/null
 if [[ $? -ne 0 ]]; then
     doas virsh pool-destroy default
