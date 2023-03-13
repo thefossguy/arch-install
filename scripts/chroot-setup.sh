@@ -80,34 +80,13 @@ usermod --password $(echo pratham | openssl passwd -1 -stdin) pratham
 # setup the root user
 usermod --password $(echo root | openssl passwd -1 -stdin) root
 
-# setup doas for pratham
-cat <<EOF > /etc/doas.conf
-permit persist keepenv pratham
-permit nopass keepenv pratham cmd hdparm
-permit nopass keepenv pratham cmd dmesg
-permit nopass keepenv pratham cmd picocom
-EOF
-
 # setup root user's cron jobs
 echo "${ROOT_CRONTAB}" | crontab -
 
 # copy dotfiles
 sudo -u pratham /chroot-scripts/doas-pratham.sh
-cp /home/pratham/my-git-repos/dotfiles/_OTHER/flameboi/etc/systemd/system/*.service /etc/systemd/system/
-rm -rf /home/pratham/my-git-repos/dotfiles
-
-
-################################################################################
-# BSPWM SETUP
-################################################################################
-
-cat <<EOF > /usr/share/xsessions/bspwm.desktop
-[Desktop Entry]
-Name=bspwm
-Comment=Binary space partitioning window manager
-Exec=/home/pratham/.xinitrc
-Type=Application
-EOF
+cp -vr /home/pratham/my-git-repos/dotfiles/_OTHER/flameboi/* /
+rm -rf /home/pratham/my-git-repos
 
 
 ################################################################################
