@@ -193,13 +193,13 @@ if ! command -v paru > /dev/null; then
     pushd /tmp
     wget "https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst"
     tar xf "paru-v1.11.2-x86_64.tar.zst"
-    ./paru -Sy paru-bin
+    ./paru -Sy --noconfirm paru-bin
     popd
 fi
 
 # install packages if not installed
-pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S ttf-apple-emoji
-pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
+pacman -Qm | grep "ttf-apple-emoji" > /dev/null || paru -S --noconfirm ttf-apple-emoji
+pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S --noconfirm ttf-fork-awesome
 
 # AUR pkgs
 #paru -S noisetorch ssmtp
@@ -215,7 +215,7 @@ pacman -Qm | grep "ttf-fork-awesome" > /dev/null || paru -S ttf-fork-awesome
 # ZFS setup
 ################################################################################
 
-pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S zfs-dkms
+pacman -Qm | grep "zfs-dkms" > /dev/null || paru -S --noconfirm zfs-dkms
 
 if command -v zpool > /dev/null; then
     lsmod | grep zfs > /dev/null
