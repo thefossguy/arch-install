@@ -244,4 +244,9 @@ echo -e "Open Firefox and do the following:
 1. Open \"about:config\"
 2. Search for boolean \"browser.search.separatePrivateDefault.ui.enabled\"
 3. Switch the value to \"true\"
-4. Sign into the Firefox account"
+4. Sign into the Firefox account
+
+---
+
+Add the line 'After=zfs.target' to '/usr/lib/systemd/system/libvirtd.service'
+"
