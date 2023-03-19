@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=bspwm
+
+[Action]
+Description=Overwrite package manager's bspwm.desktop file with user provided desktop file
+When=PostTransaction
+Exec=/bin/cp /home/pratham/my-git-repos/dotfiles/_OTHER/flameboi/usr/share/xsessions/bspwm.desktop /usr/share/xsessions/bspwm.desktop

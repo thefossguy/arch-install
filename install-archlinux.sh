@@ -210,9 +210,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # chroot setup
 mkdir -p /mnt/chroot-scripts
-cp scripts/chroot-setup.sh /mnt/chroot-scripts/
-cp nvidia.hook /mnt/chroot-scripts/
-cp scripts/doas-pratham.sh /mnt/chroot-scripts/
+cp scripts/{chroot-setup,doas-pratham}.sh /mnt/chroot-scripts/
+cp {nvidia,bspwm}.hook /mnt/chroot-scripts/
 arch-chroot /mnt bash /chroot-scripts/chroot-setup.sh "$CPU_VENDOR_NAME" "$ROOT_PARTITION"
 rm -rf /mnt/chroot-scripts
 if [[ $? -ne 0 ]]; then
