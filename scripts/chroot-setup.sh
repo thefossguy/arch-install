@@ -195,6 +195,9 @@ systemctl enable hdd-standby-on-resume.service
 systemctl enable import-flameboi-st.service
 systemctl enable import-heathen-disk.service
 
+# enable bspwm hook
+cp /chroot-scripts/bspwm.hook /etc/pacman.d/hooks/bspwm.hook
+
 # update bootloader
 bootctl update
 
