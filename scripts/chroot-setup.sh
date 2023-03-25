@@ -190,10 +190,12 @@ systemctl enable sddm.service
 systemctl enable libvirtd.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
+# custom services
 systemctl enable hdd-standby-on-boot.service
 systemctl enable hdd-standby-on-resume.service
 systemctl enable import-flameboi-st.service
 systemctl enable import-heathen-disk.service
+systemctl enable virt-pool-online.service
 
 # enable bspwm hook
 cp /chroot-scripts/bspwm.hook /etc/pacman.d/hooks/bspwm.hook
