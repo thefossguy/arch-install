@@ -244,7 +244,9 @@ echo -e "Open Firefox and do the following:
 1. Open \"about:config\"
 2. Search for boolean \"browser.search.separatePrivateDefault.ui.enabled\"
 3. Switch the value to \"true\"
-4. Sign into the Firefox account
+4. Search for \"widget.non-native-theme.scrollbar.style\"
+5. Set the value to 4 (valid values' range: 0..6)
+6. Sign into the Firefox account
 
 ---
 
