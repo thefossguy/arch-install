@@ -154,7 +154,7 @@ tldr --update
 
 # flatpak
 flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.github.tchx84.Flatseal com.uploadedlobster.peek io.gitlab.librewolf-community org.raspberrypi.rpi-imager
+flatpak install --user flathub com.brave.Browser com.discordapp.Discord com.github.maoschanz.drawing com.github.tchx84.Flatseal com.uploadedlobster.peek io.gitlab.librewolf-community org.gnome.Logs org.gnome.gitlab.YaLTeR.Identity org.gnome.gitlab.YaLTeR.VideoTrimmer org.gnome.meld org.kde.okular org.raspberrypi.rpi-imager
 
 
 ################################################################################
