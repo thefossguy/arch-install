@@ -59,7 +59,7 @@ PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
 #PKGS_TO_INSTALL+=(mesa qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-gl qemu-hw-display-virtio-gpu-pci qemu-hw-display-virtio-gpu-pci-gl xf86-video-qxl)
 #PKGS_TO_INSTALL+=(libva-mesa-driver mesa radeontop vulkan-radeon)
 #PKGS_TO_INSTALL+=(intel-media-driver libva-intel-driver mesa vulkan-intel)
-PKGS_TO_INSTALL+=(nvidia-lts nvidia-settings nvidia-utils)
+PKGS_TO_INSTALL+=(nvidia-dkms nvidia-settings nvidia-utils) #nvidia-open-dkms
 
 # display server (Wayland)
 #PKGS_TO_INSTALL+=(libdrm wayland)
