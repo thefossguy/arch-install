@@ -41,7 +41,7 @@ PKGS_TO_INSTALL+=(cloud-guest-utils dmidecode hd-idle hdparm mlocate smartmontoo
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch lazygit picocom rustup clang lua-language-server python-lsp-server lldb)
+PKGS_TO_INSTALL+=(ansible-language-server bash-language-server cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch clang lazygit lldb lua-language-server picocom python-lsp-server rustup yaml-language-server)
 # cross compilation
 PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
 
@@ -76,7 +76,7 @@ PKGS_TO_INSTALL+=(libdrm libva-mesa-driver xf86-input-libinput xf86-input-synapt
 PKGS_TO_INSTALL+=(bspwm dunst feh i3lock jq lxsession picom polybar rofi sddm socat sxhkd wmctrl xdg-desktop-portal-gtk)
 
 # GUI packages
-PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility mpv neovide otf-overpass pavucontrol slurp thunar)
+PKGS_TO_INSTALL+=(alacritty bitwarden firefox gnome-disk-utility mpv neovide otf-overpass pavucontrol slurp thunar ttf-sourcecodepro-nerd)
 
 # sound (pipewire)
 PKGS_TO_INSTALL+=(pamixer pipewire pipewire-pulse wireplumber)
