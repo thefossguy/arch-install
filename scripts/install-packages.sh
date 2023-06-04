@@ -35,13 +35,13 @@ PKGS_TO_INSTALL+=(android-tools)
 PKGS_TO_INSTALL+=(bat choose dog dua-cli dust exa fd hyperfine procs ripgrep skim tealdeer tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(cloud-guest-utils hd-idle hdparm mlocate smartmontools usbutils wol)
+PKGS_TO_INSTALL+=(cloud-guest-utils dmidecode hd-idle hdparm mlocate smartmontools usbutils wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
 
 # software devel
-PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch lazygit picocom rustup)
+PKGS_TO_INSTALL+=(cargo-audit cargo-auditable cargo-bloat cargo-depgraph cargo-outdated cargo-spellcheck cargo-update cargo-watch lazygit picocom rustup clang lua-language-server python-lsp-server lldb)
 # cross compilation
 PKGS_TO_INSTALL+=(aarch64-linux-gnu-gcc riscv64-elf-gcc riscv64-linux-gnu-gcc)
 
@@ -50,6 +50,9 @@ PKGS_TO_INSTALL+=(base-devel bc cpio gcc git inetutils kmod libelf linux-headers
 
 # virtualisation
 PKGS_TO_INSTALL+=(dnsmasq guestfs-tools libvirt qemu-desktop virt-manager)
+
+# remote management
+PKGS_TO_INSTALL+=(ansible)
 
 # network filesystems
 PKGS_TO_INSTALL+=(avahi cifs-utils nfs-utils)
