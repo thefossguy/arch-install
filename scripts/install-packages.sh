@@ -35,7 +35,7 @@ PKGS_TO_INSTALL+=(android-tools)
 PKGS_TO_INSTALL+=(bat choose dog dua-cli dust exa fd hyperfine procs ripgrep skim tealdeer tre tree)
 
 # system utilities
-PKGS_TO_INSTALL+=(cloud-guest-utils dmidecode hd-idle hdparm mlocate smartmontools usbutils wol)
+PKGS_TO_INSTALL+=(cloud-guest-utils dmidecode hdparm mlocate smartmontools usbutils wol)
 
 # compression
 PKGS_TO_INSTALL+=(tar unrar unzip xz zip)
